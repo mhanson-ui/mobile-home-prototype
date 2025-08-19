@@ -3,12 +3,8 @@
 
     <main></main>
     <script src="../assets/app.js"></script>
+    <script src="../assets/demo-loader.js"></script>
     <script>
-      const json = { rails: [ { type: 'new_and_noteworthy', items: [
-        { id:'new_1', title:'New: Indie Hit', badges:['NEW'], image:'https://picsum.photos/seed/new1/480/270', chips:['NEW', 'Indie'] },
-        { id:'new_2', title:'Just Added: Classic Revival', badges:['JUST ADDED'], image:'https://picsum.photos/seed/new2/480/270', chips:['Just Added', 'Classic'] },
-        { id:'new_3', title:'Fresh: Documentary Series', badges:['NEW'], image:'https://picsum.photos/seed/new3/480/270', chips:['Fresh', 'Documentary'] }
-      ] } ] };
-      window.renderHomeFromJSON(json);
+      loadRailDemo('new_and_noteworthy');
     </script>
     </body></html>

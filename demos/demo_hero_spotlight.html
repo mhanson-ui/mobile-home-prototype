@@ -3,13 +3,8 @@
 
     <main></main>
     <script src="../assets/app.js"></script>
+    <script src="../assets/demo-loader.js"></script>
     <script>
-      const json = { rails: [ { type: 'hero_spotlight', items: [
-        { id:'hero_1', title:'Featured: Blockbuster Premiere', badges:['NEW'], image:'https://picsum.photos/seed/hero1/800/450' },
-        { id:'hero_2', title:'Must Watch: Championship Final', badges:['4K'], image:'https://picsum.photos/seed/hero2/800/450', banner:'🏆 CHAMPIONSHIP' },
-        { id:'hero_3', title:'Award Winner: Drama Series', badges:['HDR'], image:'https://picsum.photos/seed/hero3/800/450' },
-        { id:'hero_4', title:'Fan Favorite: Action Thriller', badges:['4K'], image:'https://picsum.photos/seed/hero4/800/450' }
-      ] } ] };
-      window.renderHomeFromJSON(json);
+      loadRailDemo('hero_spotlight');
     </script>
     </body></html>
