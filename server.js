@@ -13,6 +13,11 @@ app.use((req, res, next) => {
 // Serve static files from the root directory
 app.use(express.static('.'));
 
+// Simple health check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 // Handle SPA routing - serve index.html for any route that doesn't match a file
 app.get('*', (req, res) => {
   // If the request is for a specific file that exists, let express.static handle it
@@ -24,7 +29,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`🚀 Mobile Home Prototype server running on port ${port}`);
   console.log(`📱 Access the demo launcher at http://localhost:${port}`);
   console.log(`🎯 Try the experiences:`);
