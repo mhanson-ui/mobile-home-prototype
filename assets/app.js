@@ -643,7 +643,13 @@ function cardFromItem(item, type, index = 0){
     progress = `<div class="progress" style="width:${progressPct}%"></div>`;
   }
   
-  const countdown = (type==='starting_soon') ? makeCountdownHTML(item.startTime, item.countdown_label || item.title) : '';
+  // For non-sports (Balanced/index) experiences, hide the title prefix in the countdown pill
+  let countdown = '';
+  if (type === 'starting_soon') {
+    const isSportsExperience = (typeof window !== 'undefined' && window.currentExperience === 'sports');
+    const countdownLabel = item.countdown_label || (isSportsExperience ? (item.title || '') : '');
+    countdown = makeCountdownHTML(item.startTime, countdownLabel);
+  }
   let cls = 'card';
   const tok = RailTokens[type] || {};
   const silhouette = tok.silhouette;
