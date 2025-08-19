@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Live Now (Ticker)</title><link rel="stylesheet" href="../assets/styles.css"></head><body>
+
+    <main></main>
+    <script src="../assets/app.js"></script>
+    <script>
+      const json = { rails: [ { type: 'live_now', items: [
+        { id:'ln_1', title:'Match A', badges:['LIVE'] },
+        { id:'ln_2', title:'Match B', badges:['LIVE'] },
+        { id:'ln_3', title:'Match C', badges:['LIVE'] }
+      ] } ] };
+      window.renderHomeFromJSON(json);
+    </script>
+    </body></html>

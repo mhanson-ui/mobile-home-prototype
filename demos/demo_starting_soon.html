@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Starting Soon</title><link rel="stylesheet" href="../assets/styles.css"></head><body>
+
+    <main></main>
+    <script src="../assets/app.js"></script>
+    <script>
+      const json = { rails: [ { type: 'starting_soon', items: [
+        { id:'soon_1', title:'Kickoff in:', startTime:'2024-12-31T20:30:00Z', image:'https://picsum.photos/seed/soon1/480/270', chips:['Soon', 'NFL'] },
+        { id:'soon_2', title:'Puck Drop in:', startTime:'2024-12-31T22:00:00Z', image:'https://picsum.photos/seed/soon2/480/270', chips:['Starting', 'NHL'] },
+        { id:'soon_3', title:'Tip-off in:', startTime:'2024-12-31T23:15:00Z', image:'https://picsum.photos/seed/soon3/480/270', chips:['Upcoming', 'NBA'] }
+      ] } ] };
+      window.renderHomeFromJSON(json);
+    </script>
+    </body></html>

@@ -1,0 +1,226 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carousel Prototypes — Interactive Demo</title><link rel="stylesheet" href="assets/styles.css?v=1"></head><body>
+
+<div class="debug-toggle-btn" onclick="alert('Debug panel available in the main Balanced/Sports experiences. Look for the 🔧 button in the top-right.')" title="Debug Panel">🔧</div>
+<main>
+  <div class="features-grid">
+    <div class="feature-card demo-preview" data-demo="balanced">
+      <h3>Balanced Experience</h3>
+      <p>Mixed content: Movies, TV, News, Sports</p>
+      <div class="feature-badge">16 Rail Types</div>
+      <div class="preview-mini">
+        <div class="mini-rail" style="--accent:#4a90e2">Continue Watching</div>
+        <div class="mini-rail" style="--accent:#e60000">Live Now</div>
+        <div class="mini-rail" style="--accent:#2c7be5">For You Mosaic</div>
+      </div>
+    </div>
+    
+    <div class="feature-card demo-preview" data-demo="sports">
+      <h3>Sports Experience</h3>
+      <p>Live games, clutch moments, team hubs</p>
+      <div class="feature-badge">Sports-First</div>
+      <div class="preview-mini">
+        <div class="mini-rail" style="--accent:#e60000">🔴 Lakers vs Warriors</div>
+        <div class="mini-rail" style="--accent:#111">⚡ Clutch Moments</div>
+        <div class="mini-rail" style="--accent:#ff6600">🏀 NBA Hub</div>
+      </div>
+    </div>
+    
+
+    
+
+  </div>
+  
+  <div class="rail-showcase">
+    <h3>16 Rail Archetypes by User Intent</h3>
+    
+    <div class="layer-section">
+      <h4>🎯 DECIDE → Hero Carousels</h4>
+      <div class="rail-grid">
+        <div class="rail-demo" onclick="window.location.href='demos/demo_hero_spotlight.html'">
+          <div class="rail-accent" style="background:#dc2626"></div>
+          <div class="rail-info">
+            <div class="rail-name">Hero Spotlight</div>
+            <div class="rail-purpose">DECIDE: Campaign presence</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_editorial_hero.html'">
+          <div class="rail-accent" style="background:#dc2626"></div>
+          <div class="rail-info">
+            <div class="rail-name">Editorial Hero</div>
+            <div class="rail-purpose">DECIDE: Editorial presence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layer-section">
+      <h4>⚡ CONTINUE → Utility Carousels</h4>
+      <div class="rail-grid">
+        <div class="rail-demo" onclick="window.location.href='demos/demo_continue_watching.html'">
+          <div class="rail-accent" style="background:#4a90e2"></div>
+          <div class="rail-info">
+            <div class="rail-name">Continue Watching</div>
+            <div class="rail-purpose">CONTINUE: Resume utility</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_live_now.html'">
+          <div class="rail-accent" style="background:#4a90e2"></div>
+          <div class="rail-info">
+            <div class="rail-name">Live Now</div>
+            <div class="rail-purpose">CONTINUE: Live utility</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_starting_soon.html'">
+          <div class="rail-accent" style="background:#4a90e2"></div>
+          <div class="rail-info">
+            <div class="rail-name">Starting Soon</div>
+            <div class="rail-purpose">CONTINUE: Planning utility</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layer-section">
+      <h4>🔍 DISCOVER → Discovery Carousels</h4>
+      <div class="rail-grid">
+        <div class="rail-demo" onclick="window.location.href='demos/demo_for_you_mosaic.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">For You Mosaic</div>
+            <div class="rail-purpose">DISCOVER: Fast scanning</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_new_and_noteworthy.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">New & Noteworthy</div>
+            <div class="rail-purpose">DISCOVER: Fresh content</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_trending_near_you.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">Trending Near You</div>
+            <div class="rail-purpose">DISCOVER: Social proof</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_channel_surf.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">Channel Surf</div>
+            <div class="rail-purpose">DISCOVER: Logo browsing</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_expiring_soon.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">Expiring Soon</div>
+            <div class="rail-purpose">DISCOVER: Urgency</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_people_suggestion.html'">
+          <div class="rail-accent" style="background:#9333ea"></div>
+          <div class="rail-info">
+            <div class="rail-name">People Suggestion</div>
+            <div class="rail-purpose">DISCOVER: Creators</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layer-section">
+      <h4>🎨 EXPLORE → Curated Sets and Themes</h4>
+      <div class="rail-grid">
+        <div class="rail-demo" onclick="window.location.href='demos/demo_collections_packs.html'">
+          <div class="rail-accent" style="background:#059669"></div>
+          <div class="rail-info">
+            <div class="rail-name">Collections & Packs</div>
+            <div class="rail-purpose">EXPLORE: Curated sets and themes</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="alert('Team/League hubs available in Sports Demo')">
+          <div class="rail-accent" style="background:#059669"></div>
+          <div class="rail-info">
+            <div class="rail-name">Teams & Leagues</div>
+            <div class="rail-purpose">EXPLORE: Sports hubs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="layer-section">
+      <h4>💰 UPSELL → Editorial Carousels</h4>
+      <div class="rail-grid">
+        <div class="rail-demo" onclick="window.location.href='demos/demo_because_you_watched.html'">
+          <div class="rail-accent" style="background:#ea580c"></div>
+          <div class="rail-info">
+            <div class="rail-name">Because You Watched</div>
+            <div class="rail-purpose">UPSELL: Editorial curation</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_highlights_reels.html'">
+          <div class="rail-accent" style="background:#ea580c"></div>
+          <div class="rail-info">
+            <div class="rail-name">Highlights & Reels</div>
+            <div class="rail-purpose">UPSELL: Premium moments</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_reels_grid.html'">
+          <div class="rail-accent" style="background:#ea580c"></div>
+          <div class="rail-info">
+            <div class="rail-name">Reels Grid</div>
+            <div class="rail-purpose">UPSELL: Deep engagement</div>
+          </div>
+        </div>
+        <div class="rail-demo" onclick="window.location.href='demos/demo_sponsored_shop.html'">
+          <div class="rail-accent" style="background:#ea580c"></div>
+          <div class="rail-info">
+            <div class="rail-name">Sponsored Shop</div>
+            <div class="rail-purpose">UPSELL: Commerce</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="assets/app.js?v=1"></script>
+<script>
+// Interactive feature demos on index page
+function toggleVisualDiff() {
+  const demo = document.querySelector('.diff-demo');
+  demo.classList.toggle('active');
+  console.log('Visual differentiation demo toggled');
+}
+
+function toggleDedupeDemo() {
+  const demo = document.querySelector('.dedupe-demo');
+  demo.classList.toggle('active');
+  console.log('Dedupe demo toggled');
+}
+
+function toggleMobileDemo() {
+  const demo = document.querySelector('.mobile-demo');
+  demo.classList.toggle('active');
+  console.log('Mobile demo toggled');
+}
+
+function toggleDebugPanel() {
+  alert('Debug panel available in the main Balanced/Sports experiences. Look for the 🔧 button in the top-right.');
+}
+
+// Make demo preview cards clickable
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.demo-preview').forEach(card => {
+    card.addEventListener('click', () => {
+      const demo = card.getAttribute('data-demo');
+      if (demo === 'balanced') {
+        window.location.href = 'demo_balanced/index.html';
+      } else if (demo === 'sports') {
+        window.location.href = 'demo_sports/index.html';
+      }
+    });
+  });
+});
+</script>
+</body></html>

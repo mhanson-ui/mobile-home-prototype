@@ -1,0 +1,19 @@
+{
+  "name": "mobile-home-prototype",
+  "version": "1.5.0",
+  "description": "A comprehensive prototype demonstrating differentiated rail systems for mobile content discovery",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "python3 -m http.server 8000"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["mobile", "prototype", "carousel", "content-discovery", "rails"],
+  "author": "Matthew Hanson",
+  "license": "MIT"
+}
