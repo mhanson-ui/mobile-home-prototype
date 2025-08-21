@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Home V2 Prototype</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <style>
+        /* V2-specific styles */
+        .v2-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .v2-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .v2-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .v2-nav {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .v2-nav a {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .v2-nav a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .v2-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .v2-back:hover {
+            background: rgba(0,0,0,0.9);
+            transform: scale(1.05);
+        }
+        
+        .v2-status {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .v2-status h3 {
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        
+        .v2-status p {
+            color: #6c757d;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="v2-back">← Back to V1</a>
+    
+    <div class="v2-header">
+        <div class="v2-title">Mobile Home V2 Prototype</div>
+        <div class="v2-subtitle">Next Generation Carousel Experience</div>
+    </div>
+    
+    <div class="v2-nav">
+        <a href="demo_balanced/">Balanced Demo</a>
+        <a href="demo_sports/">Sports Demo</a>
+        <a href="demos/">Individual Rails</a>
+    </div>
+    
+    <div class="v2-status">
+        <h3>🚧 Under Development</h3>
+        <p>This is the V2 prototype branch. New features and improvements are being developed here.</p>
+        <p>Use the navigation above to explore different demo experiences.</p>
+    </div>
+    
+    <script>
+        // V2-specific JavaScript can go here
+        console.log('Mobile Home V2 Prototype loaded');
+    </script>
+</body>
+</html>

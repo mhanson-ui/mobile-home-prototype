@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "purpose": "Demonstrate layered Home IA with differentiated rails and end-to-end experiences",
+    "rationale": "Shows proper content taxonomy, viewport-aware dedupe, chips-driven discovery, and sports optimization patterns from analysis reports"
+  },
+  "rails": [
+    {
+      "type": "hero_spotlight",
+      "items": [
+        { "id": "hero_1", "title": "The Last Kingdom: Final Season", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w780/9k8nOLgCBwN7v6HH2qGwp4jDd6d.jpg" },
+        { "id": "hero_2", "title": "Oppenheimer: Academy Award Winner", "badges": ["4K"], "image": "https://image.tmdb.org/t/p/w780/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" },
+        { "id": "hero_3", "title": "Wednesday Season 2: Addams Family Returns", "badges": ["HDR"], "image": "https://image.tmdb.org/t/p/w780/9PFonBhy4cQy7Jz20NpMygczOkv.jpg" },
+        { "id": "hero_4", "title": "Succession: The Complete Series", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w780/7HW47XbkNQ5fiwQFYGWdw9gs144.jpg" },
+        { "id": "hero_5", "title": "Mission: Impossible - Dead Reckoning", "badges": ["4K"], "image": "https://image.tmdb.org/t/p/w780/NNxYkU70HPurnNCSiCjYAmacwm.jpg" }
+      ]
+    },
+    {
+      "type": "editorial_hero",
+      "label": "Food",
+      "items": [
+        { "id": "editorial_1", "title": "15-Minute Weeknight Dinners That Actually Taste Good", "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&h=600&fit=crop", "curator": "Food & Wine", "badges": ["Featured"] },
+        { "id": "editorial_2", "title": "The Ultimate Guide to Perfect Grilling This Summer", "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop", "curator": "Bon Appétit", "badges": ["Trending"] },
+        { "id": "editorial_3", "title": "Restaurant-Quality Pasta at Home in 20 Minutes", "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&h=600&fit=crop", "curator": "Saveur", "badges": ["Popular"] }
+      ]
+    },
+    {
+      "type": "continue_watching",
+      "items": [
+        { "id": "title_a", "title": "The Crown — Keep Watching", "progress": 38, "image": "https://image.tmdb.org/t/p/w500/1M876KQUEYvdxasX9OgkjvGpmUn.jpg", "last_position": "23:45", "runtime": "2h 15m", "chips": ["Drama", "4K", "Award Winner"] },
+        { "id": "title_b", "title": "Stranger Things S4", "season": 4, "episode": 3, "progress": 62, "image": "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg", "next_up": "S4E4", "synopsis": "Eleven faces her darkest fears", "runtime": "1h 15m", "chips": ["Sci-Fi", "Next Episode", "HDR"] },
+        { "id": "title_c", "title": "Our Planet II", "progress": 12, "image": "https://image.tmdb.org/t/p/w500/uoF1SLXwI4wbpqIfGKLWJSFJuvI.jpg", "watched": false, "chips": ["Documentary", "4K", "Nature"] },
+        { "id": "title_d", "title": "John Mulaney: Baby J", "progress": 45, "image": "https://image.tmdb.org/t/p/w500/vJJLBMJOlY5U2e5kctj0wQ3CUer.jpg", "last_position": "18:30", "runtime": "1h 45m", "chips": ["Comedy", "Stand-up", "New"] },
+        { "id": "title_e", "title": "Top Gun: Maverick", "progress": 78, "image": "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg", "last_position": "1:12:15", "runtime": "2h 30m", "chips": ["Action", "4K", "Almost Done"] }
+      ]
+    },
+    {
+      "type": "live_now",
+      "items": [
+        { "id": "live_1", "title": "Good Morning America", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=480&h=270&fit=crop", "chips": ["News", "Morning", "HD"] },
+        { "id": "live_2", "title": "SportsCenter", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=480&h=270&fit=crop", "chips": ["Sports", "Highlights", "4K"] },
+        { "id": "live_3", "title": "Bloomberg Markets", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=480&h=270&fit=crop", "chips": ["Business", "Markets", "HD"] },
+        { "id": "live_4", "title": "The Weather Channel", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=480&h=270&fit=crop", "chips": ["Weather", "Local", "Radar"] }
+      ]
+    },
+    {
+      "type": "starting_soon",
+      "items": [
+        { "id": "soon_1", "title": "The Tonight Show with Jimmy Fallon", "network": "NBC", "startTime": "2024-12-31T20:30:00Z", "image": "https://image.tmdb.org/t/p/w500/g4amTJa2LQEuEZyOZgOeNQqDJxl.jpg" },
+        { "id": "soon_2", "title": "Saturday Night Live", "network": "NBC", "startTime": "2024-12-31T22:15:00Z", "image": "https://image.tmdb.org/t/p/w500/sHGuKFjIBisPGWcq6Non5dLprCR.jpg" },
+        { "id": "soon_3", "title": "Late Night with Seth Meyers", "network": "NBC", "startTime": "2024-12-31T23:45:00Z", "image": "https://image.tmdb.org/t/p/w500/x5asOCeJCHnllCg6YueLiURUoeQ.jpg" },
+        { "id": "soon_4", "title": "Sunday Morning", "network": "CBS", "startTime": "2025-01-01T06:00:00Z", "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=160&h=240&fit=crop" }
+      ]
+    },
+    {
+      "type": "because_you_watched",
+      "seed": "Hard Knocks",
+      "items": [
+        { "id": "rec_1", "title": "Hard Knocks: Training Camp", "image": "https://image.tmdb.org/t/p/w500/qIqexQp1wclHDXUVQdUKdWCRzDu.jpg" },
+        { "id": "rec_2", "title": "All or Nothing: Manchester City", "image": "https://image.tmdb.org/t/p/w500/vCk7KPCYNsUC6TQNNZYgU6TYCNl.jpg" },
+        { "id": "rec_3", "title": "The Last Dance", "image": "https://image.tmdb.org/t/p/w500/fKRtv53b3htyGuWxkMp4P7V2XGX.jpg" },
+        { "id": "rec_4", "title": "Formula 1: Drive to Survive", "image": "https://image.tmdb.org/t/p/w500/vC7KETe1dqRvZqzKxEUblvFwzM4.jpg" },
+        { "id": "rec_5", "title": "Cheer", "image": "https://image.tmdb.org/t/p/w500/fJu1Q7MFpgFn44K2WpVt9YrGjGz.jpg" }
+      ]
+    },
+    {
+      "type": "new_and_noteworthy",
+      "items": [
+        { "id": "new_1", "title": "Poor Things", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg" },
+        { "id": "new_2", "title": "The Zone of Interest", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w500/wKTgEz9oMdQT8IQATQUBrbnJPYy.jpg" },
+        { "id": "new_3", "title": "American Fiction", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w500/57MFWGHarg9jid7yfDTka4RmcMU.jpg" },
+        { "id": "new_4", "title": "The Holdovers", "badges": ["NEW"], "image": "https://image.tmdb.org/t/p/w500/VHSzNBTwxV8vh7wylo7O9CLdac.jpg" }
+      ]
+    },
+    {
+      "type": "for_you_mosaic",
+      "items": [
+        { "id": "fy_1", "title": "Everything Everywhere All at Once", "size": "L", "image": "https://images.unsplash.com/photo-1497015289630-41fcbea7f58c?w=480&h=270&fit=crop", "chips": ["Oscar Winner", "Sci-Fi", "4K"] },
+        { "id": "fy_2", "title": "The Bear Season 3", "size": "M", "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=480&h=270&fit=crop", "chips": ["Drama", "Critics Choice"] },
+        { "id": "fy_3", "title": "My Octopus Teacher", "size": "S", "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=480&h=270&fit=crop", "chips": ["Documentary", "Oscar Winner"] },
+        { "id": "fy_4", "title": "The Shawshank Redemption", "size": "M", "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=480&h=270&fit=crop", "chips": ["Classic", "Drama", "4K"] },
+        { "id": "fy_5", "title": "Parasite", "size": "S", "image": "https://images.unsplash.com/photo-1542623024-a797a755b8b0?w=480&h=270&fit=crop", "chips": ["Thriller", "Oscar Winner"] },
+        { "id": "fy_6", "title": "The Grand Budapest Hotel", "size": "M", "image": "https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?w=480&h=270&fit=crop", "chips": ["Comedy", "Wes Anderson"] },
+        { "id": "fy_7", "title": "Jiro Dreams of Sushi", "size": "S", "image": "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=480&h=270&fit=crop", "chips": ["Documentary", "Food"] },
+        { "id": "fy_8", "title": "Blade Runner 2049", "size": "L", "image": "https://images.unsplash.com/photo-1533450718592-29d45635f0a9?w=480&h=270&fit=crop", "chips": ["Sci-Fi", "4K", "HDR"] }
+      ]
+    },
+    {
+      "type": "trending",
+      "items": [
+        { "id": "trend_1", "title": "Taylor Swift: The Eras Tour", "image": "https://image.tmdb.org/t/p/w500/a631T9X9NNnSn96X4FQOhpJKmkJ.jpg" },
+        { "id": "trend_2", "title": "The Super Mario Bros. Movie", "image": "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mAtb8vxGT.jpg" },
+        { "id": "trend_3", "title": "Barbie", "image": "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg" },
+        { "id": "trend_4", "title": "Ted Lasso Season 3", "image": "https://image.tmdb.org/t/p/w500/5fhZZBHL7l7Y7TzONXqjk4xEBYd.jpg" },
+        { "id": "trend_5", "title": "The Mandalorian Season 3", "image": "https://image.tmdb.org/t/p/w500/eU1i6eHXlzMOlEq0ku1Rzq7Y4wA.jpg" }
+      ]
+    },
+    {
+      "type": "collections_packs",
+      "items": [
+        { "id": "pack_1", "title": "Editor's Picks", "curator": "Staff", "image": "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=480&h=270&fit=crop", "size": "L" },
+        { "id": "pack_2", "title": "Family Night", "curator": "Family", "image": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?w=480&h=270&fit=crop", "size": "M" },
+        { "id": "pack_3", "title": "Action & Adventure", "curator": "Action", "image": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=480&h=270&fit=crop", "size": "S" },
+        { "id": "pack_4", "title": "Comedy Classics", "curator": "Comedy", "image": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=480&h=270&fit=crop", "size": "M" },
+        { "id": "pack_5", "title": "Drama Collection", "curator": "Drama", "image": "https://images.unsplash.com/photo-1542206395-9feb3edaa68e?w=480&h=270&fit=crop", "item_count": 26, "size": "L" },
+        { "id": "pack_6", "title": "Award Winners", "curator": "Academy", "image": "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=480&h=270&fit=crop", "item_count": 31, "size": "M" }
+      ]
+    },
+    {
+      "type": "highlights_reels",
+      "items": [
+        { "id": "hl_1", "title": "Clutch Plays", "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=288&h=512&fit=crop", "format": "vertical", "duration": "2:15", "views": "1.2M" },
+        { "id": "hl_2", "title": "Best Trailers", "image": "https://images.unsplash.com/photo-1505238680356-667803448bb6?w=480&h=270&fit=crop", "format": "horizontal", "duration": "3:45", "views": "892K", "uploaded": "2 days ago", "description": "Epic movie trailers compilation" },
+        { "id": "hl_3", "title": "Behind the Scenes", "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=288&h=512&fit=crop", "format": "vertical", "duration": "1:30", "views": "654K" },
+        { "id": "hl_4", "title": "Deleted Scenes", "image": "https://images.unsplash.com/photo-1507924538820-ede94a04019d?w=480&h=270&fit=crop", "format": "horizontal", "duration": "4:20", "views": "1.5M", "uploaded": "1 week ago", "description": "Rare deleted scenes from blockbusters" },
+        { "id": "hl_5", "title": "Director Commentary", "image": "https://images.unsplash.com/photo-1489599577225-cf2b6e6cd0e5?w=288&h=512&fit=crop", "format": "vertical", "duration": "0:45", "views": "423K" },
+        { "id": "hl_6", "title": "Movie Clips", "image": "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=480&h=270&fit=crop", "format": "horizontal", "duration": "2:10", "views": "2.1M", "uploaded": "3 days ago", "description": "Best movie moments and iconic scenes" }
+      ]
+    },
+    {
+      "type": "channel_surf",
+      "items": [
+        { "id": "ch_espn", "title": "ESPN", "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=160&h=240&fit=crop" },
+        { "id": "ch_abc", "title": "ABC", "image": "https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=160&h=240&fit=crop" },
+        { "id": "ch_hbo", "title": "HBO", "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=160&h=240&fit=crop" },
+        { "id": "ch_netflix", "title": "Netflix", "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=160&h=240&fit=crop" },
+        { "id": "ch_disney", "title": "Disney+", "image": "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=160&h=240&fit=crop" }
+      ]
+    },
+    {
+      "type": "people_suggestion",
+      "items": [
+        { "id": "person_1", "title": "Jordan Blake", "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&crop=face", "followers": "Followed by movie_buff, cinema_fan + 8 more" },
+        { "id": "person_2", "title": "Alex Rivera", "image": "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=120&h=120&fit=crop&crop=face", "followers": "Followed by film_critic, indie_lover + 6 more" },
+        { "id": "person_3", "title": "Casey Morgan", "image": "https://images.unsplash.com/photo-1544005314-94ddf0286df3?w=120&h=120&fit=crop&crop=face", "followers": "Followed by drama_queen, oscar_watch + 12 more" },
+        { "id": "person_4", "title": "Taylor Swift", "image": "https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=120&h=120&fit=crop&crop=face", "followers": "Followed by pop_culture, music_fan + 24 more" },
+        { "id": "person_5", "title": "Sam Kim", "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face", "followers": "Followed by tech_review, gadget_guru + 15 more" }
+      ]
+    },
+    {
+      "type": "sponsored_shop",
+      "items": [
+        { "id": "shop_1", "title": "5 Reasons Why People Prefer DITA Lancier", "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=480&h=720&fit=crop", "sponsor": "ditalancier", "cta": "Shop now" },
+        { "id": "shop_2", "title": "Limited Time: Premium Content Bundle", "image": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=480&h=720&fit=crop", "sponsor": "premium_content", "cta": "Get 20% off" },
+        { "id": "shop_3", "title": "Exclusive Behind-the-Scenes Access", "image": "https://images.unsplash.com/photo-1519741497674-611481863552?w=480&h=720&fit=crop", "sponsor": "exclusive_access", "cta": "Unlock now" }
+      ]
+    },
+    {
+      "type": "expiring_soon",
+      "items": [
+        { "id": "exp_1", "title": "Leaving Soon: The Silence of the Lambs", "badges": [{"type": "expiring", "value": "Jan 3"}], "image": "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=480&h=270&fit=crop", "expiring_at": "2025-01-03" },
+        { "id": "exp_2", "title": "Leaving Soon: Pulp Fiction", "badges": [{"type": "expiring", "value": "Jan 7"}], "image": "https://images.unsplash.com/photo-1497015289630-41fcbea7f58c?w=480&h=270&fit=crop", "expiring_at": "2025-01-07" },
+        { "id": "exp_3", "title": "Leaving Soon: The Godfather", "badges": [{"type": "expiring", "value": "Jan 15"}], "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=480&h=270&fit=crop", "expiring_at": "2025-01-15" },
+        { "id": "exp_4", "title": "Leaving Soon: Goodfellas", "badges": [{"type": "expiring", "value": "Jan 31"}], "image": "https://images.unsplash.com/photo-1489599577225-cf2b6e6cd0e5?w=480&h=270&fit=crop", "expiring_at": "2025-01-31" }
+      ]
+    }
+  ]
+}

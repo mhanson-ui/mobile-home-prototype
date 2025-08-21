@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<link rel='stylesheet' href='../assets/styles.css?v=59'><title>Balanced Demo (Mock JSON)</title></head><body>
+
+<div class="debug-toggle-btn" onclick="Console.toggle()" title="Debug Panel">🔧</div>
+
+<!-- Top-level Chip Filters -->
+<div class="global-filters">
+  <div class="filter-chips">
+    <div class="chip active" data-filter="all">All</div>
+    <div class="chip" data-filter="live">Live</div>
+    <div class="chip" data-filter="movies">Movies</div>
+    <div class="chip" data-filter="tv">TV Shows</div>
+    <div class="chip" data-filter="sports">Sports</div>
+    <div class="chip" data-filter="news">News</div>
+    <div class="chip" data-filter="food">Food & Lifestyle</div>
+    <div class="chip" data-filter="new">New Releases</div>
+    <div class="chip" data-filter="4k">4K</div>
+  </div>
+</div>
+
+<main></main>
+    <script src='../assets/app.js?v=57'></script>
+<script>
+// Set experience context for proper navigation
+window.currentExperience = 'balanced';
+
+// Wait for app.js to load, then fetch JSON
+function loadDemo() {
+  console.log('Attempting to fetch data_balanced.json...');
+  fetch('data_balanced.json').then(r=>{
+    console.log('Fetch response:', r.status, r.statusText);
+    return r.json();
+  }).then(json=>{
+    console.log('JSON loaded successfully:', json);
+    if (typeof window.renderHomeFromJSON === 'function') {
+      window.renderHomeFromJSON(json);
+    } else {
+      console.error('renderHomeFromJSON function not found');
+      document.querySelector('main').innerHTML = '<div class="panel">renderHomeFromJSON function not found. App.js may not have loaded.</div>';
+    }
+  }).catch(err=>{
+    console.error('Fetch error:', err);
+    const main = document.querySelector('main');
+    main.innerHTML = '<div class="panel">Failed to load data_balanced.json: ' + err.message + '</div>';
+  });
+}
+
+// Try loading immediately, but if function isn't ready, wait for window load
+if (typeof window.renderHomeFromJSON === 'function') {
+  loadDemo();
+} else {
+  window.addEventListener('load', loadDemo);
+}
+</script>
+</body></html>

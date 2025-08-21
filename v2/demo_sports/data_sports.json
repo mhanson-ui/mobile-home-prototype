@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "purpose": "Sports-optimized Home emphasizing live games, clutch moments, and team hubs",
+    "rationale": "Prioritizes live sports content, AI-curated highlight storytelling, DVR controls, and comprehensive team/league hubs from optimization analysis"
+  },
+  "rails": [
+    {
+      "type": "hero_spotlight",
+      "items": [
+        { "id": "hero_game", "title": "Tonight: Finals Game 7", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=640&h=360&fit=crop", "banner": "🏆 CHAMPIONSHIP FINALS" },
+        { "id": "hero_playoffs", "title": "Playoff Highlights: Best Moments", "badges": ["4K"], "image": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=640&h=360&fit=crop" },
+        { "id": "hero_draft", "title": "Draft Night: Future Stars", "badges": ["NEW"], "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=640&h=360&fit=crop" },
+        { "id": "hero_allstar", "title": "All-Star Weekend Spectacular", "badges": ["HDR"], "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=640&h=360&fit=crop" },
+        { "id": "hero_season", "title": "Season Recap: Championship Run", "badges": ["4K"], "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=640&h=360&fit=crop" }
+      ]
+    },
+    {
+      "type": "live_now",
+      "items": [
+        { "id": "match_a", "title": "Q3 • Lakers 89 - Warriors 92", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "chips": ["NBA", "Playoffs", "4K"], "banner": "🔥 PLAYOFF GAME" },
+        { "id": "match_b", "title": "2nd Half • Giants 23 - Cowboys 0", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop", "chips": ["NFL", "Prime Time", "4K"] },
+        { "id": "match_c", "title": "Tennis Championship • Set 2", "badges": ["LIVE"], "image": "https://images.unsplash.com/photo-1530915365347-e35b30d6c051?w=480&h=270&fit=crop", "chips": ["Tennis", "Championship", "HD"], "score": "Djokovic 1 - Federer 0" }
+      ]
+    },
+    {
+      "type": "highlights_reels",
+      "title": "Clutch Moments",
+      "items": [
+        { "id": "reel_1", "title": "Game Winner • Curry 3-Pointer", "image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=288&h=512&fit=crop", "format": "vertical", "duration": "0:15", "views": "2.1M", "uploaded": "1 hour ago" },
+        { "id": "reel_2", "title": "Best NBA Highlights", "image": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=480&h=270&fit=crop", "format": "horizontal", "duration": "3:45", "views": "1.8M", "uploaded": "2 hours ago", "description": "Top plays from tonight's games" },
+        { "id": "reel_3", "title": "Hail Mary Pass • Final Play", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=288&h=512&fit=crop", "format": "vertical", "duration": "0:18", "views": "1.5M", "uploaded": "3 hours ago" },
+        { "id": "reel_4", "title": "NFL Weekly Roundup", "image": "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=480&h=270&fit=crop", "format": "horizontal", "duration": "5:20", "views": "3.2M", "uploaded": "1 day ago", "description": "Best moments from this week's games" },
+        { "id": "reel_5", "title": "Walk-off Home Run • Bottom 9th", "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=288&h=512&fit=crop", "format": "vertical", "duration": "0:22", "views": "892K", "uploaded": "4 hours ago" },
+        { "id": "reel_6", "title": "Championship Highlights", "image": "https://images.unsplash.com/photo-1571019613540-996a1fc17d37?w=480&h=270&fit=crop", "format": "horizontal", "duration": "4:15", "views": "2.7M", "uploaded": "2 days ago", "description": "Relive the championship moments" }
+      ]
+    },
+    {
+      "type": "team_league_hubs",
+      "items": [
+        { "id": "nfl_league", "title": "NFL", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop", "fixtures": "3 games Sunday", "standings": "Week 15", "size": "L" },
+        { "id": "giants_team", "title": "Giants", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop", "record": "6-8", "next_game": "vs Cowboys", "size": "M" },
+        { "id": "jets_team", "title": "Jets", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop", "record": "4-10", "next_game": "vs Bills", "size": "S" },
+        { "id": "cowboys_team", "title": "Cowboys", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop", "record": "10-4", "next_game": "@ Giants", "size": "M" },
+        { "id": "nba_league", "title": "NBA", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "fixtures": "8 games tonight", "standings": "Season: 82 games", "size": "L" },
+        { "id": "knicks_team", "title": "Knicks", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "record": "25-15", "next_game": "vs Nets", "size": "M" },
+        { "id": "nets_team", "title": "Nets", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "record": "18-22", "next_game": "@ Knicks", "size": "S" },
+        { "id": "celtics_team", "title": "Celtics", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "record": "35-5", "next_game": "vs Heat", "size": "M" }
+      ]
+    },
+    {
+      "type": "continue_watching",
+      "items": [
+        { "id": "vod_finale", "title": "Replay: Semi-Final", "progress": 55, "image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=480&h=270&fit=crop", "last_viewed_at": "2024-12-31T18:30:00Z" },
+        { "id": "vod_quarter", "title": "Replay: Quarter-Final", "progress": 78, "image": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=480&h=270&fit=crop", "last_viewed_at": "2024-12-31T16:45:00Z" },
+        { "id": "vod_playoff", "title": "Replay: Playoff Game", "progress": 23, "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "last_viewed_at": "2024-12-31T14:20:00Z" }
+      ]
+    },
+    {
+      "type": "starting_soon",
+      "items": [
+        { "id": "starts_1", "title": "Cowboys vs Giants", "countdown_label": "Kickoff in:", "startTime": "2024-12-31T21:00:00Z", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=480&h=270&fit=crop" },
+        { "id": "starts_2", "title": "Bruins vs Rangers", "countdown_label": "Puck Drop in:", "startTime": "2024-12-31T23:30:00Z", "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=480&h=270&fit=crop" },
+        { "id": "starts_3", "title": "Yankees vs Red Sox", "countdown_label": "First Pitch in:", "startTime": "2024-12-31T22:00:00Z", "image": "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=480&h=270&fit=crop" },
+        { "id": "starts_4", "title": "Lakers vs Warriors", "countdown_label": "Tip-off in:", "startTime": "2024-12-31T20:00:00Z", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop" }
+      ]
+    },
+    {
+      "type": "reels_grid",
+      "title": "Premium All-Access",
+      "upsell": true,
+      "plan_id": "premium_sports",
+      "value_prop": "Exclusive content and multi-camera views",
+      "items": [
+        { "id": "premium_1", "title": "Exclusive Interviews", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=288&h=512&fit=crop", "chips": ["Premium", "Exclusive"], "duration": "4:30", "disabled": true },
+        { "id": "premium_2", "title": "Coach Film Room", "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=288&h=512&fit=crop", "chips": ["Premium", "Analysis"], "duration": "6:15", "disabled": true },
+        { "id": "premium_3", "title": "Multi-Angle Replays", "image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=288&h=512&fit=crop", "chips": ["Premium", "Multi-Cam"], "duration": "2:45", "disabled": true },
+        { "id": "premium_4", "title": "Player Workouts", "image": "https://images.unsplash.com/photo-1571019613540-996a1fc17d37?w=288&h=512&fit=crop", "chips": ["Premium", "Training"], "duration": "8:20", "disabled": true }
+      ]
+    },
+
+    {
+      "type": "collections_packs",
+      "items": [
+        { "id": "pack_szn", "title": "Season Recaps", "curator": "Sports Network", "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=480&h=270&fit=crop", "item_count": 15, "size": "L" },
+        { "id": "pack_teams", "title": "By Team", "curator": "League Office", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "item_count": 32, "size": "M" },
+        { "id": "pack_playoffs", "title": "Playoff Moments", "curator": "Sports Network", "image": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=480&h=270&fit=crop", "item_count": 24, "size": "S" },
+        { "id": "pack_championships", "title": "Championship History", "curator": "Sports Network", "image": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=480&h=270&fit=crop", "item_count": 18, "size": "M" },
+        { "id": "pack_highlights", "title": "Best Highlights", "curator": "Sports Network", "image": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=480&h=270&fit=crop", "item_count": 28, "size": "L" }
+      ]
+    },
+    {
+      "type": "people_suggestion",
+      "items": [
+        { "id": "athlete_1", "title": "LeBron James", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=120&h=120&fit=crop&crop=face", "followers": "Followed by lakers_fan, nba_news + 15M more", "sport": "Basketball" },
+        { "id": "athlete_2", "title": "Tom Brady", "image": "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=120&h=120&fit=crop&crop=face", "followers": "Followed by patriots_fan, tb12_method + 12M more", "sport": "Football" },
+        { "id": "athlete_3", "title": "Serena Williams", "image": "https://images.unsplash.com/photo-1530915365347-e35b30d6c051?w=120&h=120&fit=crop&crop=face", "followers": "Followed by tennis_lover, wimbledon + 8M more", "sport": "Tennis" },
+        { "id": "athlete_4", "title": "Aaron Judge", "image": "https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=120&h=120&fit=crop&crop=face", "followers": "Followed by yankees_fan, mlb_stats + 5M more", "sport": "Baseball" },
+        { "id": "athlete_5", "title": "Connor McDavid", "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=120&h=120&fit=crop&crop=face", "followers": "Followed by oilers_fan, nhl_highlights + 3M more", "sport": "Hockey" }
+      ]
+    }
+  ]
+}
