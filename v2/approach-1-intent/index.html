@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approach 1: Intent-Based Stacking - V2 Prototype</title>
+    <link rel="stylesheet" href="../assets/css/v2-styles.css">
+</head>
+<body>
+    <div class="v2-page-header">
+        <div class="v2-page-title">Approach 1: Intent-Based Stacking</div>
+        <div class="v2-page-subtitle">Rails organized by user intent: Utility → Live → Editorial → Short-form</div>
+    </div>
+
+    <main id="main-container"></main>
+
+    <a href="../" class="v2-back">← Back to V2 Home</a>
+
+    <script src="../assets/js/v2-app.js"></script>
+    <script>
+        // Initialize V2 App with intent-based approach
+        const app = new V2App('intent', document.getElementById('main-container'));
+        
+        // Initialize the app
+        app.init().then(() => {
+            console.log('Approach 1: Intent-Based Stacking loaded');
+        }).catch(error => {
+            console.error('Failed to initialize app:', error);
+        });
+    </script>
+</body>
+</html>

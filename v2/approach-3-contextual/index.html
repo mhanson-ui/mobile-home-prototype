@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approach 3: Contextual Programming - V2 Prototype</title>
+    <link rel="stylesheet" href="../assets/css/v2-styles.css">
+</head>
+<body>
+    <div class="v2-page-header">
+        <div class="v2-page-title">Approach 3: Contextual Programming</div>
+        <div class="v2-page-subtitle">Rails change based on time of day context</div>
+    </div>
+
+    <main id="main-container"></main>
+
+    <!-- Context Toggle -->
+    <div class="context-toggle">
+        <h4>Time Context</h4>
+        <div class="context-buttons">
+            <button class="context-btn active" data-context="morning">Morning</button>
+            <button class="context-btn" data-context="evening">Evening</button>
+            <button class="context-btn" data-context="nextday">Next Day</button>
+        </div>
+    </div>
+
+    <a href="../" class="v2-back">← Back to V2 Home</a>
+
+    <script src="../assets/js/v2-app.js"></script>
+    <script>
+        // Initialize V2 App with contextual approach
+        const app = new V2App('contextual', document.getElementById('main-container'));
+        
+        // Set up context toggle
+        const contextButtons = document.querySelectorAll('.context-btn');
+        contextButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Update active button
+                contextButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Save context and reload
+                const context = btn.getAttribute('data-context');
+                localStorage.setItem('v2-context', context);
+                
+                // Reload rails with new context
+                app.loadRails();
+            });
+        });
+        
+        // Initialize the app
+        app.init().then(() => {
+            console.log('Approach 3: Contextual Programming loaded');
+        }).catch(error => {
+            console.error('Failed to initialize app:', error);
+        });
+    </script>
+</body>
+</html>

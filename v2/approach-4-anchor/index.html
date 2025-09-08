@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approach 4: Anchor + Rotational - V2 Prototype</title>
+    <link rel="stylesheet" href="../assets/css/v2-styles.css">
+</head>
+<body>
+    <div class="v2-page-header">
+        <div class="v2-page-title">Approach 4: Anchor + Rotational Model</div>
+        <div class="v2-page-subtitle">Fixed anchor rails with dynamic rotational content below</div>
+    </div>
+
+    <main id="main-container"></main>
+
+    <a href="../" class="v2-back">← Back to V2 Home</a>
+
+    <script src="../assets/js/v2-app.js"></script>
+    <script>
+        // Initialize V2 App with anchor + rotational approach
+        const app = new V2App('anchor', document.getElementById('main-container'));
+        
+        // Initialize the app
+        app.init().then(() => {
+            console.log('Approach 4: Anchor + Rotational loaded');
+        }).catch(error => {
+            console.error('Failed to initialize app:', error);
+        });
+    </script>
+</body>
+</html>
