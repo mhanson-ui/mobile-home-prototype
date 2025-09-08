@@ -206,12 +206,22 @@ main {
   font-weight: 600;
   margin-bottom: 2px;
   line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   position: relative;
+}
+
+/* Small cards - allow 2 lines */
+.card.size-small .meta .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Medium and large cards - single line with ellipsis */
+.card.size-medium .meta .title,
+.card.size-large .meta .title {
+  white-space: nowrap;
 }
 
 /* Scrolling text for long titles */

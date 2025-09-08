@@ -191,7 +191,7 @@ class V2App {
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
       { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
-      { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'small' }
+      { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' }
     ];
 
     // Repeat pattern 5 times
@@ -268,7 +268,7 @@ class V2App {
     const rotational = [
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
-      { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'small' },
+      { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
       { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
       { id: 'editorial_story', title: 'Editorial Story', type: 'editorial', aspect: '16:9', size: 'medium' }
     ];
