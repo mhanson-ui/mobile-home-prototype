@@ -340,6 +340,7 @@ main {
 
 .row[data-rail^="shortform_placeholder"] .row-header {
   padding: 16px 20px 8px;
+  position: relative;
 }
 
 .row[data-rail^="shortform_placeholder"] .row-header h2 {
@@ -348,7 +349,29 @@ main {
 }
 
 .row[data-rail^="shortform_placeholder"] .rail-controls {
-  display: none;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.row[data-rail^="shortform_placeholder"]:hover .rail-controls {
+  opacity: 1;
+}
+
+.row[data-rail^="shortform_placeholder"] .rail-controls .rail-control-btn {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.row[data-rail^="shortform_placeholder"] .rail-controls .rail-control-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Rail Controls */
