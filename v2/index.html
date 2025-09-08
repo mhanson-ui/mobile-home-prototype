@@ -15,18 +15,18 @@
         
         .v2-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .v2-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .v2-subtitle {
-            font-size: 18px;
+            font-size: 16px;
             color: #666;
         }
         
@@ -41,7 +41,7 @@
         .approach-card {
             background: white;
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -55,41 +55,43 @@
         }
         
         .approach-card h3 {
-            margin: 0 0 12px 0;
-            font-size: 20px;
+            margin: 0 0 8px 0;
+            font-size: 18px;
             color: #333;
         }
         
         .approach-card p {
             color: #666;
-            margin: 0 0 16px 0;
-            font-size: 14px;
-            line-height: 1.5;
+            margin: 0 0 12px 0;
+            font-size: 13px;
+            line-height: 1.4;
         }
         
         .approach-badge {
             display: inline-block;
             background: #667eea;
             color: white;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-size: 11px;
             font-weight: 500;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .preview-rails {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            margin-top: 16px;
+            gap: 3px;
+            margin-top: 10px;
         }
         
         .mini-rail {
             background: rgba(102, 126, 234, 0.1);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 11px;
             color: #667eea;
             border-left: 3px solid currentColor;
         }
@@ -110,16 +112,17 @@
         .features-section {
             background: white;
             border-radius: 12px;
-            padding: 32px;
+            padding: 24px;
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .features-section h2 {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             color: #333;
+            font-size: 22px;
         }
         
         .features-grid {
@@ -173,9 +176,9 @@
     <div class="approaches-grid">
         <!-- Approach 1 Card -->
         <div class="approach-card approach-1" onclick="window.location.href='approach-1-intent/'">
+            <div class="approach-badge">Structured Discovery</div>
             <h3>Intent-Based Stacking</h3>
             <p>Rails organized by user intent in a fixed hierarchy for predictable content discovery.</p>
-            <div class="approach-badge">Structured Discovery</div>
             <div class="preview-rails">
                 <div class="mini-rail">Utility Rails</div>
                 <div class="mini-rail">Live Content</div>
@@ -186,9 +189,9 @@
 
         <!-- Approach 2 Card -->
         <div class="approach-card approach-2" onclick="window.location.href='approach-2-mixed/'">
+            <div class="approach-badge">Visual Differentiation</div>
             <h3>Mixed by Aspect Ratio</h3>
             <p>Rails mixed by editorial relevance, with aspect ratios indicating content type.</p>
-            <div class="approach-badge">Visual Differentiation</div>
             <div class="preview-rails">
                 <div class="mini-rail">16:9 → Utility/Live</div>
                 <div class="mini-rail">2:3 → Short-Form</div>
@@ -198,9 +201,9 @@
 
         <!-- Approach 3 Card -->
         <div class="approach-card approach-3" onclick="window.location.href='approach-3-contextual/'">
+            <div class="approach-badge">Time-Based Curation</div>
             <h3>Contextual Programming</h3>
             <p>Rails dynamically change based on time of day context for relevant content.</p>
-            <div class="approach-badge">Time-Based Curation</div>
             <div class="preview-rails">
                 <div class="mini-rail">Morning: Today's Games</div>
                 <div class="mini-rail">Evening: Live Now</div>
@@ -210,9 +213,9 @@
 
         <!-- Approach 4 Card -->
         <div class="approach-card approach-4" onclick="window.location.href='approach-4-anchor/'">
+            <div class="approach-badge">Hybrid Model</div>
             <h3>Anchor + Rotational</h3>
             <p>Fixed anchor rails for consistency with dynamic rotational content below.</p>
-            <div class="approach-badge">Hybrid Model</div>
             <div class="preview-rails">
                 <div class="mini-rail">Continue Watching (Fixed)</div>
                 <div class="mini-rail">Currently Live (Fixed)</div>
@@ -246,8 +249,8 @@
     </div>
     
     <!-- Basic Elements Showcase -->
-    <div class="design-system-showcase" style="max-width: 1200px; margin: 40px auto;">
-        <h3 style="text-align: center; margin-bottom: 30px; color: #333;">Basic Elements</h3>
+    <div class="design-system-showcase" style="max-width: 1200px; margin: 30px auto;">
+        <h3 style="text-align: center; margin-bottom: 24px; color: #333; font-size: 22px;">Basic Elements</h3>
         
         <!-- Card Sizes Section -->
         <div class="layer-section" style="margin-bottom: 40px;">
