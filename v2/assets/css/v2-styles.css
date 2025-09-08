@@ -210,6 +210,27 @@ main {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+}
+
+/* Scrolling text for long titles */
+.card:hover .meta .title.scrolling {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: scrollText 8s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-100% + 100%));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .card .meta .duration {
@@ -616,6 +637,15 @@ main {
   margin-bottom: 0;
 }
 
+/* Minimal header variant */
+.v2-page-header-minimal {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  color: #1d1d1f;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .v2-page-title {
   font-size: 28px;
   font-weight: 600;
@@ -625,6 +655,23 @@ main {
 .v2-page-subtitle {
   font-size: 16px;
   opacity: 0.9;
+}
+
+/* Minimal header text styles */
+.v2-page-header-minimal .v2-page-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #667eea;
+}
+
+.v2-page-header-minimal .v2-page-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 1;
+  color: #1d1d1f;
 }
 
 /* Responsive Adjustments */
