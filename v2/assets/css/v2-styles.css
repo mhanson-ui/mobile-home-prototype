@@ -20,7 +20,11 @@ main {
 
 /* Row and Rail Layout */
 .row {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .row-header {
@@ -29,6 +33,7 @@ main {
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 0 20px;
+  position: relative;
 }
 
 .row-header h2 {
@@ -244,7 +249,53 @@ main {
   object-fit: cover;
 }
 
-/* Rail Type Indicators - removed emojis per user request */
+/* Rail Type Indicators - Color-coded backgrounds */
+.row[data-rail-type="utility"] {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.row[data-rail-type="utility"] .row-header h2 {
+  color: #495057;
+}
+
+.row[data-rail-type="live"] {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+}
+
+.row[data-rail-type="live"] .row-header h2 {
+  color: #dc3545;
+}
+
+.row[data-rail-type="editorial"] {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e7e9ff 100%);
+}
+
+.row[data-rail-type="editorial"] .row-header h2 {
+  color: #5856d6;
+}
+
+.row[data-rail-type="shortform"] {
+  background: linear-gradient(135deg, #fff9f0 0%, #ffedd5 100%);
+}
+
+.row[data-rail-type="shortform"] .row-header h2 {
+  color: #f97316;
+}
+
+/* Special rails */
+.row[data-rail="shortform_placeholder"] {
+  background: #1d1d1f;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.row[data-rail="shortform_placeholder"] .row-header {
+  padding: 16px 20px 8px;
+}
+
+.row[data-rail="shortform_placeholder"] .row-header h2 {
+  color: white;
+}
 
 /* Rail Controls */
 .rail-controls {
@@ -311,9 +362,20 @@ main {
 /* Anchor Rails (Approach 4) */
 .row[data-anchor="true"] {
   position: relative;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(102, 126, 234, 0.02) 100%);
 }
 
-/* Anchor rail indicator - removed emoji per user request */
+.row[data-anchor="true"] .row-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #667eea;
+  border-radius: 12px 0 0 12px;
+}
 
 /* Specific rail fixes to ensure proper 16:9 aspect ratio */
 .row[data-rail="continue_watching"] .card {
