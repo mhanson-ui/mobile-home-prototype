@@ -467,9 +467,9 @@ class V2App {
       if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
     }
 
-    // Show tags for editorial and shortform rails
-    const showTags = (railDef.type === 'editorial' || railDef.type === 'shortform') && item.tags;
-    const tagList = showTags ? item.tags.split(',').map(tag => tag.trim()).slice(0, 3) : [];
+    // Show single tag for editorial and shortform rails
+    const showTag = (railDef.type === 'editorial' || railDef.type === 'shortform') && item.tags;
+    const firstTag = showTag ? item.tags.split(',')[0].trim() : null;
 
     return `
       <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}" data-rail-type="${railDef.type}">
@@ -480,10 +480,10 @@ class V2App {
           </div>
         ` : ''}
         ${badges.join('')}
+        ${firstTag ? `<div class="content-tag">${firstTag}</div>` : ''}
         <div class="meta">
           <div class="title">${item.title}</div>
           ${metadata.length > 0 ? `<div class="metadata">${metadata.join(' • ')}</div>` : ''}
-          ${tagList.length > 0 ? `<div class="tags">${tagList.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>` : ''}
         </div>
       </div>
     `;

@@ -271,41 +271,31 @@ main {
   opacity: 1;
 }
 
-/* Tag styles for editorial and shortform content */
-.card .meta .tags {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  flex-wrap: wrap;
-}
-
-.card .meta .tag {
-  font-size: 8px;
-  padding: 2px 6px;
-  background: rgba(0, 0, 0, 0.05);
-  color: #6b7280;
-  border-radius: 4px;
-  text-transform: lowercase;
+/* Content tag badge - positioned like LIVE/NEW badges */
+.content-tag {
+  position: absolute;
+  bottom: 48px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  z-index: 2;
   white-space: nowrap;
-  transition: all 0.2s ease;
 }
 
 /* Different tag styles for editorial vs shortform */
-.card[data-rail-type="editorial"] .meta .tag {
-  background: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
+.card[data-rail-type="editorial"] .content-tag {
+  background: rgba(99, 102, 241, 0.9);
+  color: white;
 }
 
-.card[data-rail-type="shortform"] .meta .tag,
-.row[data-rail^="shortform_placeholder"] .card .meta .tag {
-  background: rgba(236, 72, 153, 0.1);
-  color: #ec4899;
-}
-
-/* Hover state for tags */
-.card:hover .meta .tag {
-  transform: scale(1.05);
-  opacity: 0.9;
+.card[data-rail-type="shortform"] .content-tag,
+.row[data-rail^="shortform_placeholder"] .card .content-tag {
+  background: rgba(236, 72, 153, 0.9);
+  color: white;
 }
 
 /* Card Size Variations */
