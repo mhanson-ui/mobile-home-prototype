@@ -467,8 +467,12 @@ class V2App {
       if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
     }
 
+    // Show tags for editorial and shortform rails
+    const showTags = (railDef.type === 'editorial' || railDef.type === 'shortform') && item.tags;
+    const tagList = showTags ? item.tags.split(',').map(tag => tag.trim()).slice(0, 3) : [];
+
     return `
-      <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}">
+      <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}" data-rail-type="${railDef.type}">
         <img src="${thumbnailSrc}" alt="${item.title}" class="thumb" onerror="this.src='/v2/public/thumbs/_placeholder.svg'">
         ${item.progress > 0 ? `
           <div class="progress-bar">
@@ -479,6 +483,7 @@ class V2App {
         <div class="meta">
           <div class="title">${item.title}</div>
           ${metadata.length > 0 ? `<div class="metadata">${metadata.join(' • ')}</div>` : ''}
+          ${tagList.length > 0 ? `<div class="tags">${tagList.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>` : ''}
         </div>
       </div>
     `;
