@@ -57,23 +57,32 @@
 /* Card Size Variations */
 .card.size-small {
   width: 160px;
+  overflow: hidden;
 }
 
 .card.size-medium {
   width: 220px;
+  overflow: hidden;
 }
 
 .card.size-large {
   width: 320px;
+  overflow: hidden;
 }
 
 /* Aspect Ratio Classes */
 .card.aspect-16-9 img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .card.aspect-2-3 img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 2 / 3;
+  object-fit: cover;
 }
 
 /* Rail Type Indicators */
