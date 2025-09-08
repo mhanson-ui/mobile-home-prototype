@@ -475,12 +475,14 @@ class V2App {
     // Priority rules for showing tags:
     // 1. Show tags on editorial, shortform, and live rails
     // 2. No tags if item has progress bar (Continue Watching items)
-    // 3. For live content, filter out redundant "live" tag
+    // 3. No tags if item already has LIVE or NEW badge
     const shouldShowTag = (railDef.type === 'editorial' || 
                           railDef.type === 'shortform' ||
                           railDef.type === 'live') && 
                          item.tags && 
-                         item.progress === 0; // No tags on Continue Watching items
+                         item.progress === 0 && // No tags on Continue Watching items
+                         !item.is_live && // No tags on live items (already have LIVE badge)
+                         !item.is_new; // No tags on new items (already have NEW badge)
     
     // Use pre-selected tag if available, otherwise select based on rules
     let selectedTag = null;
@@ -873,7 +875,7 @@ class V2App {
     
     // Process each item to ensure tag variety
     content.forEach(item => {
-      if (!item.tags || item.progress > 0) {
+      if (!item.tags || item.progress > 0 || item.is_live || item.is_new) {
         item._selectedTag = null;
         return;
       }
