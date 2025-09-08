@@ -156,6 +156,37 @@
 
 /* Anchor rail indicator - removed emoji per user request */
 
+/* Specific rail fixes to ensure proper 16:9 aspect ratio */
+.row[data-rail="continue_watching"] .card {
+  height: auto !important;
+  min-height: unset !important;
+}
+
+.row[data-rail="continue_watching"] .card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.row[data-rail="currently_live"] .card {
+  height: auto !important;
+  min-height: unset !important;
+}
+
+.row[data-rail="currently_live"] .card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.row[data-rail="continue_watching"] .track,
+.row[data-rail="currently_live"] .track {
+  height: auto !important;
+  min-height: unset !important;
+}
+
 /* Context Toggle (Approach 3) */
 .context-toggle {
   position: fixed;
