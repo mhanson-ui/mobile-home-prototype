@@ -736,8 +736,8 @@ class V2App {
   }
   
   applyViewerTypePreferences(content, railDef) {
-    // Skip personalization for utility rails (continue watching, recordings, etc)
-    if (railDef.type === 'utility') return content;
+    // Apply lighter personalization for utility rails
+    const isUtilityRail = railDef.type === 'utility';
     
     let weighted = [...content];
     
@@ -745,8 +745,10 @@ class V2App {
       case 'tv':
         // Prioritize TV shows, deprioritize movies and sports
         weighted = weighted.sort((a, b) => {
-          const scoreA = a.type === 'tv' ? 2 : (a.type === 'movie' ? -1 : 0);
-          const scoreB = b.type === 'tv' ? 2 : (b.type === 'movie' ? -1 : 0);
+          // Lighter touch for utility rails - just subtle preference
+          const multiplier = isUtilityRail ? 1 : 2;
+          const scoreA = a.type === 'tv' ? multiplier : (a.type === 'movie' ? -1 : 0);
+          const scoreB = b.type === 'tv' ? multiplier : (b.type === 'movie' ? -1 : 0);
           return scoreB - scoreA;
         });
         break;
@@ -754,8 +756,9 @@ class V2App {
       case 'movies':
         // Prioritize movies, deprioritize TV shows
         weighted = weighted.sort((a, b) => {
-          const scoreA = a.type === 'movie' ? 2 : (a.type === 'tv' ? -1 : 0);
-          const scoreB = b.type === 'movie' ? 2 : (b.type === 'tv' ? -1 : 0);
+          const multiplier = isUtilityRail ? 1 : 2;
+          const scoreA = a.type === 'movie' ? multiplier : (a.type === 'tv' ? -1 : 0);
+          const scoreB = b.type === 'movie' ? multiplier : (b.type === 'tv' ? -1 : 0);
           return scoreB - scoreA;
         });
         break;
@@ -763,8 +766,9 @@ class V2App {
       case 'news':
         // Prioritize news and documentary content
         weighted = weighted.sort((a, b) => {
-          const scoreA = (a.genre === 'news' || a.type === 'documentary') ? 2 : -1;
-          const scoreB = (b.genre === 'news' || b.type === 'documentary') ? 2 : -1;
+          const multiplier = isUtilityRail ? 1 : 2;
+          const scoreA = (a.genre === 'news' || a.type === 'documentary') ? multiplier : -1;
+          const scoreB = (b.genre === 'news' || b.type === 'documentary') ? multiplier : -1;
           return scoreB - scoreA;
         });
         break;
@@ -772,8 +776,9 @@ class V2App {
       case 'sports':
         // Moderate sports preference - live games and highlights
         weighted = weighted.sort((a, b) => {
-          const scoreA = a.genre === 'sports' ? 2 : (a.subgenre === 'sports' ? 1 : -1);
-          const scoreB = b.genre === 'sports' ? 2 : (b.subgenre === 'sports' ? 1 : -1);
+          const multiplier = isUtilityRail ? 1 : 2;
+          const scoreA = a.genre === 'sports' ? multiplier : (a.subgenre === 'sports' ? 1 : -1);
+          const scoreB = b.genre === 'sports' ? multiplier : (b.subgenre === 'sports' ? 1 : -1);
           return scoreB - scoreA;
         });
         break;
@@ -781,13 +786,27 @@ class V2App {
       case 'sports-pro':
         // Heavy sports preference - everything sports related
         weighted = weighted.sort((a, b) => {
+          const multiplier = isUtilityRail ? 1.5 : 3;
           const scoreA = (a.genre === 'sports' || a.subgenre === 'sports' || 
-                          (a.tags && a.tags.includes('sports'))) ? 3 : -2;
+                          (a.tags && a.tags.includes('sports'))) ? multiplier : -2;
           const scoreB = (b.genre === 'sports' || b.subgenre === 'sports' || 
-                          (b.tags && b.tags.includes('sports'))) ? 3 : -2;
+                          (b.tags && b.tags.includes('sports'))) ? multiplier : -2;
           return scoreB - scoreA;
         });
         break;
+    }
+    
+    // For Continue Watching, also consider progress (recently watched first)
+    if (railDef.id === 'continue_watching') {
+      weighted = weighted.sort((a, b) => {
+        // First sort by viewer preference (from above)
+        const prefDiff = weighted.indexOf(a) - weighted.indexOf(b);
+        // If same preference level, sort by progress (higher progress = watched more recently)
+        if (Math.abs(prefDiff) < 2) {
+          return (b.progress || 0) - (a.progress || 0);
+        }
+        return prefDiff;
+      });
     }
     
     // Shuffle within score groups to maintain some variety
