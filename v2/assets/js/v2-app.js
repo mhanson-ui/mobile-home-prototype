@@ -372,9 +372,15 @@ class V2App {
       rail.setAttribute('data-anchor', 'true');
     }
 
+    // Rename GameStream to Entertainment for non-sports shortform content
+    let title = definition.title;
+    if (definition.id.includes('gamestream') && this.activeGenre !== 'sports' && this.activeGenre !== 'all') {
+      title = title.replace('GameStream', 'Entertainment');
+    }
+    
     rail.innerHTML = `
       <div class="row-header">
-        <h2>${definition.title}</h2>
+        <h2>${title}</h2>
         <div class="rail-controls"></div>
       </div>
       <div class="carousel" tabindex="0">
