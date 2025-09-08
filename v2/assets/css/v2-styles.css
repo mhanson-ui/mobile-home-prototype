@@ -263,7 +263,7 @@ main {
 /* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
   background: #f8f9fa;
-  border-left: 4px solid #6c757d;
+  border: 2px solid #6c757d;
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
@@ -272,7 +272,7 @@ main {
 
 .row[data-rail-type="live"] {
   background: #f0f9ff;
-  border-left: 4px solid #0284c7;
+  border: 2px solid #0284c7;
 }
 
 .row[data-rail-type="live"] .row-header h2 {
@@ -281,7 +281,7 @@ main {
 
 .row[data-rail-type="editorial"] {
   background: #faf5ff;
-  border-left: 4px solid #7c3aed;
+  border: 2px solid #7c3aed;
 }
 
 .row[data-rail-type="editorial"] .row-header h2 {
@@ -290,7 +290,7 @@ main {
 
 .row[data-rail-type="shortform"] {
   background: #fefce8;
-  border-left: 4px solid #ca8a04;
+  border: 2px solid #ca8a04;
 }
 
 .row[data-rail-type="shortform"] .row-header h2 {
@@ -302,6 +302,7 @@ main {
   background: #1d1d1f;
   padding: 0;
   margin-bottom: 24px;
+  border: 2px solid #374151;
 }
 
 .row[data-rail="shortform_placeholder"] .row-header {
