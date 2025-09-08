@@ -159,7 +159,8 @@ class V2App {
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'recommended', title: 'Recommended', type: 'editorial', aspect: '16:9', size: 'medium' },
       // SHORT-FORM
-      { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' }
+      { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
+      { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' }
     ];
 
     railDefinitions.forEach(def => {
@@ -174,6 +175,7 @@ class V2App {
     const railDefinitions = [
       { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small' },
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
+      { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
       { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'small' }
@@ -203,6 +205,7 @@ class V2App {
       case 'evening':
         railDefinitions = [
           { id: 'currently_live', title: 'Currently Live', type: 'live', aspect: '16:9', size: 'large' },
+          { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
           { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
           { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
@@ -237,6 +240,7 @@ class V2App {
     // Rotational rails
     const rotational = [
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
+      { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'small' },
       { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
       { id: 'editorial_story', title: 'Editorial Story', type: 'editorial', aspect: '16:9', size: 'medium' }
@@ -312,6 +316,12 @@ class V2App {
           item.duration <= 30 || item.type === 'sports'
         ).slice(0, 8);
       
+      case 'shortform_placeholder':
+        // Return only 1 item for fullwidth carousel
+        return filtered.filter(item => 
+          item.duration <= 30 || item.type === 'sports'
+        ).slice(0, 1);
+      
       case 'recordings':
         return filtered.filter(item => 
           item.type === 'tv' || item.type === 'movie'
@@ -363,7 +373,7 @@ class V2App {
   createCard(item, railDef) {
     const placeholderFile = railDef.aspect === '2:3' ? '_placeholder_2x3.svg' : '_placeholder_16x9.svg';
     const thumbnailSrc = `/v2/public/thumbs/${placeholderFile}`;
-    const sizeClass = `size-${railDef.size}`;
+    const sizeClass = railDef.size === 'fullwidth' ? 'size-fullwidth' : `size-${railDef.size}`;
     const aspectClass = railDef.aspect === '2:3' ? 'aspect-2-3' : 'aspect-16-9';
 
     return `
