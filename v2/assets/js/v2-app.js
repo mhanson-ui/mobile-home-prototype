@@ -149,7 +149,7 @@ class V2App {
   loadIntentBasedRails() {
     const railDefinitions = [
       // UTILITY
-      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small' },
+      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
       { id: 'recordings', title: 'Recordings', type: 'utility', aspect: '16:9', size: 'small' },
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
       // LIVE
@@ -182,7 +182,7 @@ class V2App {
 
   loadMixedAspectRails() {
     const railDefinitions = [
-      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small' },
+      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
@@ -213,7 +213,7 @@ class V2App {
       case 'morning':
         railDefinitions = [
           { id: 'todays_games', title: "Today's Games", type: 'utility', aspect: '16:9', size: 'medium' },
-          { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small' },
+          { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
           { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' }
         ];
@@ -231,7 +231,7 @@ class V2App {
       case 'nextday':
         railDefinitions = [
           { id: 'highlights', title: "Tonight's Highlights", type: 'shortform', aspect: '2:3', size: 'medium' },
-          { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small' },
+          { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'editorial_picks', title: 'Editorial Picks', type: 'editorial', aspect: '16:9', size: 'medium' }
         ];
         break;
@@ -255,7 +255,7 @@ class V2App {
   loadAnchorRotationalRails() {
     // Fixed anchors
     const anchors = [
-      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'small', isAnchor: true },
+      { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium', isAnchor: true },
       { id: 'currently_live', title: 'Currently Live', type: 'live', aspect: '16:9', size: 'large', isAnchor: true },
       { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium', isAnchor: true }
     ];
