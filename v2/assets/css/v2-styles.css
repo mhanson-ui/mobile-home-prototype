@@ -344,14 +344,8 @@ main {
   text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.row[data-rail="shortform_placeholder"] .rail-controls .rail-control-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.row[data-rail="shortform_placeholder"] .rail-controls .rail-control-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+.row[data-rail="shortform_placeholder"] .rail-controls {
+  display: none;
 }
 
 /* Rail Controls */
