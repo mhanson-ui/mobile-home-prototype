@@ -173,20 +173,20 @@
     <div class="approaches-grid">
         <!-- Approach 1 Card -->
         <div class="approach-card approach-1" onclick="window.location.href='approach-1-intent/'">
-            <h3>📚 Intent-Based Stacking</h3>
+            <h3>Intent-Based Stacking</h3>
             <p>Rails organized by user intent in a fixed hierarchy for predictable content discovery.</p>
             <div class="approach-badge">Structured Discovery</div>
             <div class="preview-rails">
-                <div class="mini-rail">⚡ Utility Rails</div>
-                <div class="mini-rail">🔴 Live Content</div>
-                <div class="mini-rail">⭐ Editorial Picks</div>
-                <div class="mini-rail">📱 Short-Form</div>
+                <div class="mini-rail">Utility Rails</div>
+                <div class="mini-rail">Live Content</div>
+                <div class="mini-rail">Editorial Picks</div>
+                <div class="mini-rail">Short-Form</div>
             </div>
         </div>
 
         <!-- Approach 2 Card -->
         <div class="approach-card approach-2" onclick="window.location.href='approach-2-mixed/'">
-            <h3>🎨 Mixed by Aspect Ratio</h3>
+            <h3>Mixed by Aspect Ratio</h3>
             <p>Rails mixed by editorial relevance, with aspect ratios indicating content type.</p>
             <div class="approach-badge">Visual Differentiation</div>
             <div class="preview-rails">
@@ -198,122 +198,211 @@
 
         <!-- Approach 3 Card -->
         <div class="approach-card approach-3" onclick="window.location.href='approach-3-contextual/'">
-            <h3>⏰ Contextual Programming</h3>
+            <h3>Contextual Programming</h3>
             <p>Rails dynamically change based on time of day context for relevant content.</p>
             <div class="approach-badge">Time-Based Curation</div>
             <div class="preview-rails">
-                <div class="mini-rail">🌅 Morning: Today's Games</div>
-                <div class="mini-rail">🌆 Evening: Live Now</div>
-                <div class="mini-rail">🌙 Next Day: Highlights</div>
+                <div class="mini-rail">Morning: Today's Games</div>
+                <div class="mini-rail">Evening: Live Now</div>
+                <div class="mini-rail">Next Day: Highlights</div>
             </div>
         </div>
 
         <!-- Approach 4 Card -->
         <div class="approach-card approach-4" onclick="window.location.href='approach-4-anchor/'">
-            <h3>📌 Anchor + Rotational</h3>
+            <h3>Anchor + Rotational</h3>
             <p>Fixed anchor rails for consistency with dynamic rotational content below.</p>
             <div class="approach-badge">Hybrid Model</div>
             <div class="preview-rails">
-                <div class="mini-rail">📌 Continue Watching</div>
-                <div class="mini-rail">📌 Currently Live</div>
-                <div class="mini-rail">📌 GameStream</div>
-                <div class="mini-rail">🔄 Dynamic Content</div>
+                <div class="mini-rail">Continue Watching (Fixed)</div>
+                <div class="mini-rail">Currently Live (Fixed)</div>
+                <div class="mini-rail">GameStream (Fixed)</div>
+                <div class="mini-rail">Dynamic Content</div>
             </div>
         </div>
     </div>
 
     <!-- Features Section -->
     <div class="features-section">
-        <h2>✨ V2 Key Features</h2>
+        <h2>V2 Key Features</h2>
         <div class="features-grid">
             <div class="feature-item">
-                <h4>🎯 Genre Filtering</h4>
+                <h4>Genre Filtering</h4>
                 <p>Click genre chips to filter all carousels. Empty carousels automatically hide.</p>
             </div>
             <div class="feature-item">
-                <h4>🔄 Auto-Advance</h4>
+                <h4>Auto-Advance</h4>
                 <p>Rails auto-scroll after 5 seconds of inactivity for passive browsing.</p>
             </div>
             <div class="feature-item">
-                <h4>➕ Rail Controls</h4>
+                <h4>Rail Controls</h4>
                 <p>Add, remove, and reorder rails with approach-specific constraints.</p>
             </div>
             <div class="feature-item">
-                <h4>📊 Real Content</h4>
+                <h4>Real Content</h4>
                 <p>40+ real shows, movies, and sports content with rich metadata.</p>
             </div>
         </div>
     </div>
-
+    
     <!-- V2 Design System Showcase -->
     <div class="design-system-showcase" style="max-width: 1200px; margin: 40px auto;">
         <h3 style="text-align: center; margin-bottom: 30px; color: #333;">V2 Design System Components</h3>
         
         <!-- Card Sizes Section -->
         <div class="layer-section" style="margin-bottom: 40px;">
-            <h4 style="color: #667eea; margin-bottom: 20px;">📐 Card Sizes & Aspect Ratios</h4>
-            <div class="rail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #4a90e2; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
-                    <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Small (16:9)</div>
-                        <div class="rail-purpose" style="font-size: 12px; color: #666;">160px width - Utility content</div>
+            <h4 style="color: #667eea; margin-bottom: 20px;">Card Sizes & Aspect Ratios</h4>
+            <div style="display: flex; gap: 20px; overflow-x: auto; padding: 20px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <!-- Small Card -->
+                <div style="flex-shrink: 0;">
+                    <div style="width: 160px; height: 90px; background: #e5e7eb; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: #007AFF;"></div>
+                        <div style="position: absolute; top: 8px; left: 8px; background: #ff3b30; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">LIVE</div>
+                        <div style="position: absolute; bottom: 8px; left: 8px; right: 8px;">
+                            <div style="background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px;">The Last of Us</div>
+                        </div>
                     </div>
+                    <p style="text-align: center; margin-top: 8px; font-size: 12px; color: #666;">Small (16:9) - 160px</p>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #9333ea; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
-                    <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Medium (16:9)</div>
-                        <div class="rail-purpose" style="font-size: 12px; color: #666;">220px width - Standard browsing</div>
+                
+                <!-- Medium Card -->
+                <div style="flex-shrink: 0;">
+                    <div style="width: 220px; height: 124px; background: #e5e7eb; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; top: 8px; right: 8px; background: #34c759; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">NEW</div>
+                        <div style="position: absolute; bottom: 8px; left: 8px; right: 8px;">
+                            <div style="background: rgba(0,0,0,0.7); color: white; padding: 6px 10px; border-radius: 4px;">
+                                <div style="font-size: 13px; font-weight: 500;">Top Gun: Maverick</div>
+                                <div style="font-size: 11px; opacity: 0.8;">2h 11min • PG-13</div>
+                            </div>
+                        </div>
                     </div>
+                    <p style="text-align: center; margin-top: 8px; font-size: 12px; color: #666;">Medium (16:9) - 220px</p>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #dc2626; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
-                    <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Large (16:9)</div>
-                        <div class="rail-purpose" style="font-size: 12px; color: #666;">320px width - Hero/Live content</div>
+                
+                <!-- Large Card -->
+                <div style="flex-shrink: 0;">
+                    <div style="width: 320px; height: 180px; background: #e5e7eb; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; top: 12px; left: 12px; background: #ff3b30; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600;">LIVE NOW</div>
+                        <div style="position: absolute; bottom: 12px; left: 12px; right: 12px;">
+                            <div style="background: rgba(0,0,0,0.8); color: white; padding: 12px; border-radius: 6px;">
+                                <div style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">NBA: Lakers vs Celtics</div>
+                                <div style="font-size: 13px; opacity: 0.9;">4th Quarter - LAL 98, BOS 102</div>
+                            </div>
+                        </div>
                     </div>
+                    <p style="text-align: center; margin-top: 8px; font-size: 12px; color: #666;">Large (16:9) - 320px</p>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #ea580c; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
-                    <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Portrait (2:3)</div>
-                        <div class="rail-purpose" style="font-size: 12px; color: #666;">200px width - Short-form/Clips</div>
+                
+                <!-- Portrait Card -->
+                <div style="flex-shrink: 0;">
+                    <div style="width: 200px; height: 300px; background: #e5e7eb; border-radius: 8px; position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; top: 8px; left: 8px; right: 8px; display: flex; justify-content: space-between;">
+                            <div style="background: rgba(0,0,0,0.7); color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px;">0:47</div>
+                            <div style="background: rgba(0,0,0,0.7); color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px;">1.2M views</div>
+                        </div>
+                        <div style="position: absolute; bottom: 8px; left: 8px; right: 8px;">
+                            <div style="background: rgba(0,0,0,0.8); color: white; padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 13px; font-weight: 500; margin-bottom: 2px;">Game-Winning Shot!</div>
+                                <div style="font-size: 11px; opacity: 0.8;">@sportscenter</div>
+                            </div>
+                        </div>
                     </div>
+                    <p style="text-align: center; margin-top: 8px; font-size: 12px; color: #666;">Portrait (2:3) - 200px</p>
                 </div>
             </div>
         </div>
 
         <!-- UI Components Section -->
         <div class="layer-section" style="margin-bottom: 40px;">
-            <h4 style="color: #764ba2; margin-bottom: 20px;">🎨 UI Components</h4>
-            <div class="rail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #667eea; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
+            <h4 style="color: #764ba2; margin-bottom: 20px;">UI Components</h4>
+            <div class="rail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <!-- Genre Chips -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #667eea; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Genre Chips</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Genre Chips</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                            <span style="background: #007AFF; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;">All</span>
+                            <span style="background: rgba(0, 0, 0, 0.08); color: rgba(0, 0, 0, 0.8); padding: 6px 16px; border-radius: 20px; font-size: 13px; cursor: pointer;">Sports</span>
+                            <span style="background: rgba(0, 0, 0, 0.08); color: rgba(0, 0, 0, 0.8); padding: 6px 16px; border-radius: 20px; font-size: 13px; cursor: pointer;">Drama</span>
+                            <span style="background: rgba(0, 0, 0, 0.08); color: rgba(0, 0, 0, 0.8); padding: 6px 16px; border-radius: 20px; font-size: 13px; cursor: pointer;">Live</span>
+                        </div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Filter all content dynamically</div>
                     </div>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #764ba2; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
+                
+                <!-- Progress Bars -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #764ba2; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Progress Bars</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Progress Bars</div>
+                        <div style="margin-bottom: 12px;">
+                            <div style="background: rgba(255, 255, 255, 0.3); height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 8px;">
+                                <div style="background: #007AFF; height: 100%; width: 45%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.3); height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 8px;">
+                                <div style="background: #007AFF; height: 100%; width: 80%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.3); height: 4px; border-radius: 2px; overflow: hidden;">
+                                <div style="background: #007AFF; height: 100%; width: 15%; transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Resume where you left off</div>
                     </div>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #f093fb; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
+                
+                <!-- Badges -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #f093fb; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Live/New Badges</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Live/New Badges</div>
+                        <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                            <span style="background: #ff3b30; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; animation: pulse 2s infinite;">LIVE</span>
+                            <span style="background: #34c759; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">NEW</span>
+                            <span style="background: #ff9500; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">EXPIRING</span>
+                        </div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Real-time content indicators</div>
                     </div>
                 </div>
-                <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <div class="rail-accent" style="background: #4facfe; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
+                
+                <!-- Rail Controls -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #4facfe; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Rail Controls</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Rail Controls</div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                            <button style="background: rgba(0, 0, 0, 0.1); border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; color: rgba(0, 0, 0, 0.7);">↑</button>
+                            <button style="background: rgba(0, 0, 0, 0.1); border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; color: rgba(0, 0, 0, 0.7);">↓</button>
+                            <button style="background: rgba(0, 0, 0, 0.1); border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; color: rgba(0, 0, 0, 0.7);">×</button>
+                            <button style="background: rgba(0, 122, 255, 0.1); color: #007AFF; border: none; border-radius: 6px; padding: 6px 12px; font-size: 14px; cursor: pointer; font-weight: 500;">+ Add Rail</button>
+                        </div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Add, remove, reorder rails</div>
+                    </div>
+                </div>
+                
+                <!-- Auto-Advance Indicator -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #00bfa5; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
+                    <div class="rail-info">
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Auto-Advance</div>
+                        <div style="margin-bottom: 12px;">
+                            <div style="background: rgba(0, 0, 0, 0.8); color: white; padding: 6px 12px; border-radius: 16px; font-size: 12px; display: inline-block;">Auto-advancing</div>
+                        </div>
+                        <div class="rail-purpose" style="font-size: 12px; color: #666;">5 second inactivity trigger</div>
+                    </div>
+                </div>
+                
+                <!-- Context Toggle -->
+                <div class="rail-demo" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div class="rail-accent" style="background: #ff6b6b; height: 4px; margin: -20px -20px 16px; border-radius: 8px 8px 0 0;"></div>
+                    <div class="rail-info">
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 12px;">Context Toggle</div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                            <button style="background: #007AFF; color: white; border: 1px solid #007AFF; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;">Morning</button>
+                            <button style="background: white; color: #333; border: 1px solid rgba(0, 0, 0, 0.2); padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;">Evening</button>
+                            <button style="background: white; color: #333; border: 1px solid rgba(0, 0, 0, 0.2); padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;">Next Day</button>
+                        </div>
+                        <div class="rail-purpose" style="font-size: 12px; color: #666;">Time-based rail ordering</div>
                     </div>
                 </div>
             </div>
@@ -321,33 +410,33 @@
 
         <!-- Rail Categories Section -->
         <div class="layer-section" style="margin-bottom: 40px;">
-            <h4 style="color: #059669; margin-bottom: 20px;">📚 Rail Categories</h4>
+            <h4 style="color: #059669; margin-bottom: 20px;">Rail Categories</h4>
             <div class="rail-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
                 <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                     <div class="rail-accent" style="background: #4a90e2; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">⚡ Utility Rails</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Utility Rails</div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Continue, Resume, Manage</div>
                     </div>
                 </div>
                 <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                     <div class="rail-accent" style="background: #dc2626; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">🔴 Live Rails</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Live Rails</div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Real-time content</div>
                     </div>
                 </div>
                 <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                     <div class="rail-accent" style="background: #ea580c; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">📱 Short-Form</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Short-Form</div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Clips, Highlights, Reels</div>
                     </div>
                 </div>
                 <div class="rail-demo" style="background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                     <div class="rail-accent" style="background: #9333ea; height: 4px; margin: -16px -16px 16px; border-radius: 8px 8px 0 0;"></div>
                     <div class="rail-info">
-                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">⭐ Editorial</div>
+                        <div class="rail-name" style="font-weight: 600; margin-bottom: 4px;">Editorial</div>
                         <div class="rail-purpose" style="font-size: 12px; color: #666;">Curated & Featured</div>
                     </div>
                 </div>
