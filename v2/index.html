@@ -3,50 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Home V2 Prototype</title>
+    <title>Mobile Home V2 Prototype - Choose Your Experience</title>
     <link rel="stylesheet" href="../assets/styles.css">
     <style>
-        /* V2-specific styles */
-        .v2-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        /* V2 landing page styles matching V1 pattern */
+        body {
+            margin: 0;
             padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .v2-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         
         .v2-title {
-            font-size: 24px;
-            font-weight: 600;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
             margin-bottom: 8px;
         }
         
         .v2-subtitle {
-            font-size: 16px;
-            opacity: 0.9;
+            font-size: 18px;
+            color: #666;
         }
         
-        .v2-nav {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+        .approaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
         }
         
-        .v2-nav a {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
+        .approach-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .v2-nav a:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+        .approach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .approach-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .approach-card p {
+            color: #666;
+            margin: 0 0 16px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .approach-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        .preview-rails {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 16px;
+        }
+        
+        .mini-rail {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #667eea;
+            border-left: 3px solid currentColor;
+        }
+        
+        /* Approach-specific colors */
+        .approach-1 .approach-badge { background: #667eea; }
+        .approach-1 .mini-rail { color: #667eea; background: rgba(102, 126, 234, 0.1); }
+        
+        .approach-2 .approach-badge { background: #764ba2; }
+        .approach-2 .mini-rail { color: #764ba2; background: rgba(118, 75, 162, 0.1); }
+        
+        .approach-3 .approach-badge { background: #f093fb; }
+        .approach-3 .mini-rail { color: #f093fb; background: rgba(240, 147, 251, 0.1); }
+        
+        .approach-4 .approach-badge { background: #4facfe; }
+        .approach-4 .mini-rail { color: #4facfe; background: rgba(79, 172, 254, 0.1); }
+        
+        .features-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .features-section h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-item h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item p {
+            color: #666;
+            font-size: 14px;
         }
         
         .v2-back {
@@ -67,143 +160,101 @@
             background: rgba(0,0,0,0.9);
             transform: scale(1.05);
         }
-        
-        .v2-status {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px auto;
-            max-width: 600px;
-            text-align: center;
-        }
-        
-        .v2-status h3 {
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        
-        .v2-status p {
-            color: #6c757d;
-            margin: 0;
-        }
     </style>
 </head>
 <body>
     <a href="../" class="v2-back">← Back to V1</a>
     
     <div class="v2-header">
-        <div class="v2-title">Mobile Home V2 Prototype</div>
-        <div class="v2-subtitle">Next Generation Carousel Experience</div>
+        <h1 class="v2-title">V2 Prototype Experiences</h1>
+        <p class="v2-subtitle">Choose your carousel approach</p>
     </div>
     
-    <div class="v2-nav">
-        <a href="approach-1-intent/">Approach 1: Intent-Based Stacking</a>
-        <a href="approach-2-mixed/">Approach 2: Mixed by Aspect Ratio</a>
-        <a href="approach-3-contextual/">Approach 3: Contextual Programming</a>
-        <a href="approach-4-anchor/">Approach 4: Anchor + Rotational</a>
-    </div>
-    
-    <div class="v2-status">
-        <h3>🎯 Choose Your V2 Experience</h3>
-        <p>Explore different carousel approaches designed for next-generation content discovery.</p>
-    </div>
-
-    <!-- Demo Rails Section -->
-    <div class="v2-demos-section" style="margin: 40px 0; padding: 0 20px;">
-        <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Featured V2 Demos</h2>
-        
-        <!-- Approach 1 Preview -->
-        <section class="demo-preview" style="margin-bottom: 40px; background: #f8f9fa; padding: 20px; border-radius: 12px;">
-            <h3 style="color: #667eea;">📚 Intent-Based Stacking</h3>
-            <p style="color: #666; margin-bottom: 20px;">Rails organized by user intent: Utility → Live → Editorial → Short-form</p>
-            <div class="demo-iframe-container" style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                <iframe src="approach-1-intent/" style="width: 100%; height: 100%; border: none;"></iframe>
+    <div class="approaches-grid">
+        <!-- Approach 1 Card -->
+        <div class="approach-card approach-1" onclick="window.location.href='approach-1-intent/'">
+            <h3>📚 Intent-Based Stacking</h3>
+            <p>Rails organized by user intent in a fixed hierarchy for predictable content discovery.</p>
+            <div class="approach-badge">Structured Discovery</div>
+            <div class="preview-rails">
+                <div class="mini-rail">⚡ Utility Rails</div>
+                <div class="mini-rail">🔴 Live Content</div>
+                <div class="mini-rail">⭐ Editorial Picks</div>
+                <div class="mini-rail">📱 Short-Form</div>
             </div>
-            <a href="approach-1-intent/" class="demo-link" style="display: inline-block; margin-top: 15px; color: #667eea; text-decoration: none; font-weight: 500;">
-                Open Full Demo →
-            </a>
-        </section>
+        </div>
 
-        <!-- Approach 2 Preview -->
-        <section class="demo-preview" style="margin-bottom: 40px; background: #f8f9fa; padding: 20px; border-radius: 12px;">
-            <h3 style="color: #764ba2;">🎨 Mixed by Aspect Ratio</h3>
-            <p style="color: #666; margin-bottom: 20px;">Rails mixed by editorial relevance, differentiated by aspect ratio</p>
-            <div class="demo-iframe-container" style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                <iframe src="approach-2-mixed/" style="width: 100%; height: 100%; border: none;"></iframe>
+        <!-- Approach 2 Card -->
+        <div class="approach-card approach-2" onclick="window.location.href='approach-2-mixed/'">
+            <h3>🎨 Mixed by Aspect Ratio</h3>
+            <p>Rails mixed by editorial relevance, with aspect ratios indicating content type.</p>
+            <div class="approach-badge">Visual Differentiation</div>
+            <div class="preview-rails">
+                <div class="mini-rail">16:9 → Utility/Live</div>
+                <div class="mini-rail">2:3 → Short-Form</div>
+                <div class="mini-rail">Mixed Editorial Order</div>
             </div>
-            <a href="approach-2-mixed/" class="demo-link" style="display: inline-block; margin-top: 15px; color: #764ba2; text-decoration: none; font-weight: 500;">
-                Open Full Demo →
-            </a>
-        </section>
+        </div>
 
-        <!-- Approach 3 Preview -->
-        <section class="demo-preview" style="margin-bottom: 40px; background: #f8f9fa; padding: 20px; border-radius: 12px;">
-            <h3 style="color: #667eea;">⏰ Contextual Programming</h3>
-            <p style="color: #666; margin-bottom: 20px;">Rails change based on time of day context (Morning/Evening/Next Day)</p>
-            <div class="demo-iframe-container" style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                <iframe src="approach-3-contextual/" style="width: 100%; height: 100%; border: none;"></iframe>
+        <!-- Approach 3 Card -->
+        <div class="approach-card approach-3" onclick="window.location.href='approach-3-contextual/'">
+            <h3>⏰ Contextual Programming</h3>
+            <p>Rails dynamically change based on time of day context for relevant content.</p>
+            <div class="approach-badge">Time-Based Curation</div>
+            <div class="preview-rails">
+                <div class="mini-rail">🌅 Morning: Today's Games</div>
+                <div class="mini-rail">🌆 Evening: Live Now</div>
+                <div class="mini-rail">🌙 Next Day: Highlights</div>
             </div>
-            <a href="approach-3-contextual/" class="demo-link" style="display: inline-block; margin-top: 15px; color: #667eea; text-decoration: none; font-weight: 500;">
-                Open Full Demo →
-            </a>
-        </section>
+        </div>
 
-        <!-- Approach 4 Preview -->
-        <section class="demo-preview" style="margin-bottom: 40px; background: #f8f9fa; padding: 20px; border-radius: 12px;">
-            <h3 style="color: #764ba2;">📌 Anchor + Rotational</h3>
-            <p style="color: #666; margin-bottom: 20px;">Fixed anchor rails with dynamic rotational content</p>
-            <div class="demo-iframe-container" style="position: relative; height: 400px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-                <iframe src="approach-4-anchor/" style="width: 100%; height: 100%; border: none;"></iframe>
+        <!-- Approach 4 Card -->
+        <div class="approach-card approach-4" onclick="window.location.href='approach-4-anchor/'">
+            <h3>📌 Anchor + Rotational</h3>
+            <p>Fixed anchor rails for consistency with dynamic rotational content below.</p>
+            <div class="approach-badge">Hybrid Model</div>
+            <div class="preview-rails">
+                <div class="mini-rail">📌 Continue Watching</div>
+                <div class="mini-rail">📌 Currently Live</div>
+                <div class="mini-rail">📌 GameStream</div>
+                <div class="mini-rail">🔄 Dynamic Content</div>
             </div>
-            <a href="approach-4-anchor/" class="demo-link" style="display: inline-block; margin-top: 15px; color: #764ba2; text-decoration: none; font-weight: 500;">
-                Open Full Demo →
-            </a>
-        </section>
+        </div>
     </div>
 
-    <!-- Key Features Section -->
-    <div class="v2-features" style="background: #667eea; color: white; padding: 40px 20px; margin-top: 60px;">
-        <h2 style="text-align: center; margin-bottom: 30px;">✨ V2 Key Features</h2>
-        <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+    <!-- Features Section -->
+    <div class="features-section">
+        <h2>✨ V2 Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
                 <h4>🎯 Genre Filtering</h4>
-                <p style="font-size: 14px; opacity: 0.9;">Click genre chips to filter all carousels. Empty carousels automatically hide.</p>
+                <p>Click genre chips to filter all carousels. Empty carousels automatically hide.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+            <div class="feature-item">
                 <h4>🔄 Auto-Advance</h4>
-                <p style="font-size: 14px; opacity: 0.9;">Rails auto-scroll after 5 seconds of inactivity for passive browsing.</p>
+                <p>Rails auto-scroll after 5 seconds of inactivity for passive browsing.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+            <div class="feature-item">
                 <h4>➕ Rail Controls</h4>
-                <p style="font-size: 14px; opacity: 0.9;">Add, remove, and reorder rails with approach-specific constraints.</p>
+                <p>Add, remove, and reorder rails with approach-specific constraints.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px;">
+            <div class="feature-item">
                 <h4>📊 Real Content</h4>
-                <p style="font-size: 14px; opacity: 0.9;">40+ real shows, movies, and sports content with metadata.</p>
+                <p>40+ real shows, movies, and sports content with rich metadata.</p>
             </div>
         </div>
     </div>
     
     <script>
-        console.log('Mobile Home V2 Prototype loaded');
-        
-        // Prevent iframe navigation from affecting parent
-        document.querySelectorAll('iframe').forEach(iframe => {
-            iframe.addEventListener('load', function() {
-                try {
-                    // Disable clicks in iframe from navigating parent
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    iframeDoc.addEventListener('click', function(e) {
-                        if (e.target.tagName === 'A' && e.target.href) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }
-                    });
-                } catch(e) {
-                    // Cross-origin restrictions may prevent this
-                    console.log('Could not modify iframe behavior');
-                }
+        // Make approach cards clickable
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('V2 Prototype landing page loaded');
+            
+            // Add hover effects
+            document.querySelectorAll('.approach-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.cursor = 'pointer';
+                });
             });
         });
     </script>
