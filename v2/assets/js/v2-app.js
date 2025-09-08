@@ -67,6 +67,10 @@ class V2App {
     this.activeGenre = 'all';
     this.rails = [];
     this.autoAdvanceTimers = new Map();
+    
+    // Get viewer type from URL or localStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    this.viewerType = urlParams.get('viewer') || localStorage.getItem('v2-viewer-type') || 'all';
   }
 
   async init() {
@@ -313,6 +317,9 @@ class V2App {
         (item.tags && item.tags.includes(this.activeGenre))
       );
     }
+    
+    // Apply viewer type personalization
+    filtered = this.applyViewerTypePreferences(filtered, railDef);
 
     // Filter by rail type
     switch(railDef.id) {
@@ -421,6 +428,45 @@ class V2App {
     const sizeClass = railDef.size === 'fullwidth' ? 'size-fullwidth' : `size-${railDef.size}`;
     const aspectClass = railDef.aspect === '2:3' ? 'aspect-2-3' : 'aspect-16-9';
 
+    // Determine which badges/info to show based on content type and state
+    const badges = [];
+    
+    // Primary badges (top priority)
+    if (item.is_live) {
+      badges.push('<div class="live-badge">LIVE</div>');
+    } else if (item.is_new) {
+      badges.push('<div class="new-badge">NEW</div>');
+    } else if (item.is_expiring) {
+      badges.push('<div class="expiring-badge">EXPIRING</div>');
+    }
+    
+    // Quality badge for premium content
+    if (item.quality === '4K HDR') {
+      badges.push('<div class="quality-badge">4K HDR</div>');
+    } else if (item.quality === '4K') {
+      badges.push('<div class="quality-badge">4K</div>');
+    }
+    
+    // Additional metadata
+    const metadata = [];
+    
+    // Show different info based on content type
+    if (item.type === 'sports' && item.is_live) {
+      // For live sports, show just the duration
+      if (item.duration) metadata.push(`<span class="meta-item">${Math.floor(item.duration/60)}h ${item.duration%60}m</span>`);
+    } else if (item.type === 'movie') {
+      // For movies, show year and rating
+      if (item.year) metadata.push(`<span class="meta-item">${item.year}</span>`);
+      if (item.rating) metadata.push(`<span class="meta-item meta-rating">${item.rating}</span>`);
+    } else if (item.type === 'tv') {
+      // For TV shows, show network and episode duration
+      if (item.network) metadata.push(`<span class="meta-item">${item.network}</span>`);
+      if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
+    } else {
+      // Default: show duration if available
+      if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
+    }
+
     return `
       <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}">
         <img src="${thumbnailSrc}" alt="${item.title}" class="thumb" onerror="this.src='/v2/public/thumbs/_placeholder.svg'">
@@ -429,11 +475,10 @@ class V2App {
             <div class="progress" style="width: ${item.progress}%"></div>
           </div>
         ` : ''}
-        ${item.is_live ? '<div class="live-badge">LIVE</div>' : ''}
-        ${item.is_new ? '<div class="new-badge">NEW</div>' : ''}
+        ${badges.join('')}
         <div class="meta">
           <div class="title">${item.title}</div>
-          ${item.duration ? `<div class="duration">${item.duration}min</div>` : ''}
+          ${metadata.length > 0 ? `<div class="metadata">${metadata.join(' • ')}</div>` : ''}
         </div>
       </div>
     `;
@@ -688,6 +733,77 @@ class V2App {
   showAddRailMenu(afterRail) {
     // Implementation would show a menu to add new rails
     console.log('Add rail menu would appear here');
+  }
+  
+  applyViewerTypePreferences(content, railDef) {
+    // Skip personalization for utility rails (continue watching, recordings, etc)
+    if (railDef.type === 'utility') return content;
+    
+    let weighted = [...content];
+    
+    switch(this.viewerType) {
+      case 'tv':
+        // Prioritize TV shows, deprioritize movies and sports
+        weighted = weighted.sort((a, b) => {
+          const scoreA = a.type === 'tv' ? 2 : (a.type === 'movie' ? -1 : 0);
+          const scoreB = b.type === 'tv' ? 2 : (b.type === 'movie' ? -1 : 0);
+          return scoreB - scoreA;
+        });
+        break;
+        
+      case 'movies':
+        // Prioritize movies, deprioritize TV shows
+        weighted = weighted.sort((a, b) => {
+          const scoreA = a.type === 'movie' ? 2 : (a.type === 'tv' ? -1 : 0);
+          const scoreB = b.type === 'movie' ? 2 : (b.type === 'tv' ? -1 : 0);
+          return scoreB - scoreA;
+        });
+        break;
+        
+      case 'news':
+        // Prioritize news and documentary content
+        weighted = weighted.sort((a, b) => {
+          const scoreA = (a.genre === 'news' || a.type === 'documentary') ? 2 : -1;
+          const scoreB = (b.genre === 'news' || b.type === 'documentary') ? 2 : -1;
+          return scoreB - scoreA;
+        });
+        break;
+        
+      case 'sports':
+        // Moderate sports preference - live games and highlights
+        weighted = weighted.sort((a, b) => {
+          const scoreA = a.genre === 'sports' ? 2 : (a.subgenre === 'sports' ? 1 : -1);
+          const scoreB = b.genre === 'sports' ? 2 : (b.subgenre === 'sports' ? 1 : -1);
+          return scoreB - scoreA;
+        });
+        break;
+        
+      case 'sports-pro':
+        // Heavy sports preference - everything sports related
+        weighted = weighted.sort((a, b) => {
+          const scoreA = (a.genre === 'sports' || a.subgenre === 'sports' || 
+                          (a.tags && a.tags.includes('sports'))) ? 3 : -2;
+          const scoreB = (b.genre === 'sports' || b.subgenre === 'sports' || 
+                          (b.tags && b.tags.includes('sports'))) ? 3 : -2;
+          return scoreB - scoreA;
+        });
+        break;
+    }
+    
+    // Shuffle within score groups to maintain some variety
+    return this.shuffleWithinGroups(weighted);
+  }
+  
+  shuffleWithinGroups(arr) {
+    // Simple shuffle to add variety while maintaining preference weights
+    for (let i = arr.length - 1; i > 0; i--) {
+      // Only shuffle within similar items (every 3-4 items)
+      if (i % 4 === 0) {
+        const j = Math.max(0, i - Math.floor(Math.random() * 4));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+    return arr;
   }
 }
 

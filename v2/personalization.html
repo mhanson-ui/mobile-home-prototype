@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalize Your Experience - V2 Prototype</title>
+    <link rel="stylesheet" href="assets/css/v2-styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .personalization-container {
+            max-width: 800px;
+            width: 90%;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .personalization-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        
+        .personalization-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+        
+        .viewer-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .viewer-type-card {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 24px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .viewer-type-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .viewer-type-card.selected {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+        
+        .viewer-type-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        
+        .viewer-type-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        
+        .viewer-type-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+        
+        .continue-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .continue-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .continue-btn.active:hover {
+            background: #5a67d8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .skip-link {
+            display: block;
+            margin-top: 20px;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .skip-link:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="personalization-container">
+        <h1 class="personalization-title">What Do You Love to Watch?</h1>
+        <p class="personalization-subtitle">Help us personalize your experience by selecting your viewing preference</p>
+        
+        <div class="viewer-types">
+            <div class="viewer-type-card" data-type="tv">
+                <div class="viewer-type-icon">📺</div>
+                <h3 class="viewer-type-title">TV Shows</h3>
+                <p class="viewer-type-description">Series, limited series, and episodic content</p>
+            </div>
+            
+            <div class="viewer-type-card" data-type="movies">
+                <div class="viewer-type-icon">🎬</div>
+                <h3 class="viewer-type-title">Movies</h3>
+                <p class="viewer-type-description">Feature films, documentaries, and specials</p>
+            </div>
+            
+            <div class="viewer-type-card" data-type="news">
+                <div class="viewer-type-icon">📰</div>
+                <h3 class="viewer-type-title">News</h3>
+                <p class="viewer-type-description">Breaking news, analysis, and current events</p>
+            </div>
+            
+            <div class="viewer-type-card" data-type="sports">
+                <div class="viewer-type-icon">⚽</div>
+                <h3 class="viewer-type-title">Sports</h3>
+                <p class="viewer-type-description">Live games, highlights, and sports talk</p>
+            </div>
+            
+            <div class="viewer-type-card" data-type="sports-pro">
+                <div class="viewer-type-icon">🏆</div>
+                <h3 class="viewer-type-title">Sports Pro</h3>
+                <p class="viewer-type-description">Everything sports - games, analysis, docs, and more</p>
+            </div>
+        </div>
+        
+        <button class="continue-btn" id="continueBtn">Continue to Prototypes</button>
+        <a href="index.html" class="skip-link">Skip personalization</a>
+    </div>
+    
+    <script>
+        let selectedType = null;
+        const cards = document.querySelectorAll('.viewer-type-card');
+        const continueBtn = document.getElementById('continueBtn');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove previous selection
+                cards.forEach(c => c.classList.remove('selected'));
+                
+                // Add selection to clicked card
+                card.classList.add('selected');
+                selectedType = card.getAttribute('data-type');
+                
+                // Enable continue button
+                continueBtn.classList.add('active');
+            });
+        });
+        
+        continueBtn.addEventListener('click', () => {
+            if (selectedType) {
+                // Store preference
+                localStorage.setItem('v2-viewer-type', selectedType);
+                
+                // Redirect to main V2 page
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -156,6 +156,11 @@
     <div class="v2-header">
         <h1 class="v2-title">V2 Prototype Experiences</h1>
         <p class="v2-subtitle">Choose your carousel approach</p>
+        <div id="personalization-status" style="display: none; margin-top: 16px;">
+            <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 500;">
+                <span id="viewer-type-label"></span> • <a href="personalization.html" style="color: #667eea;">Change</a>
+            </span>
+        </div>
     </div>
     
     <div class="approaches-grid">
@@ -530,6 +535,38 @@
                 card.addEventListener('mouseenter', () => {
                     card.style.cursor = 'pointer';
                 });
+            });
+        });
+    </script>
+    <script>
+        // Check for personalization and redirect if not set
+        const viewerType = localStorage.getItem('v2-viewer-type');
+        const personalizationStatus = document.getElementById('personalization-status');
+        const viewerTypeLabel = document.getElementById('viewer-type-label');
+        
+        if (!viewerType) {
+            // First time visitor - redirect to personalization
+            window.location.href = 'personalization.html';
+        } else {
+            // Show current preference
+            const labels = {
+                'tv': 'TV Shows Viewer',
+                'movies': 'Movie Enthusiast',
+                'news': 'News Watcher',
+                'sports': 'Sports Fan',
+                'sports-pro': 'Sports Pro'
+            };
+            
+            personalizationStatus.style.display = 'block';
+            viewerTypeLabel.textContent = labels[viewerType] || 'Personalized';
+        }
+        
+        // Pass viewer type to approach pages
+        document.querySelectorAll('.approach-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = card.getAttribute('onclick').match(/href='(.+?)'/)[1];
+                window.location.href = href + '?viewer=' + (viewerType || 'all');
             });
         });
     </script>
