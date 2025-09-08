@@ -355,14 +355,9 @@ main {
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 1;
   display: flex;
   gap: 8px;
-}
-
-.row[data-rail^="shortform_placeholder"]:hover .rail-controls {
-  opacity: 1;
 }
 
 .row[data-rail^="shortform_placeholder"] .rail-controls .rail-control-btn {
