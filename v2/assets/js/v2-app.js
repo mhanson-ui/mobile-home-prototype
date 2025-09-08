@@ -133,6 +133,14 @@ class V2App {
     });
     this.autoAdvanceTimers.clear();
     
+    // Reset global tag distribution tracker
+    this.globalTagDistribution = {
+      totalEligibleCards: 0,
+      taggedCards: 0,
+      targetTagPercentage: 0.3, // Aim for 30% of eligible cards to have tags
+      usedTags: new Set()
+    };
+    
     // Load rails based on approach
     switch(this.approach) {
       case 'intent':
@@ -869,12 +877,22 @@ class V2App {
       return content;
     }
     
-    // Track which tags have been used to ensure variety
-    const usedTags = new Set();
     const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
+    const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
     
-    // Process each item to ensure tag variety
-    content.forEach(item => {
+    // Count eligible items in this rail
+    const eligibleItems = content.filter(item => 
+      item.tags && item.progress === 0 && !item.is_live && !item.is_new
+    );
+    
+    this.globalTagDistribution.totalEligibleCards += eligibleItems.length;
+    
+    // Calculate how many tags this rail should show for balanced distribution
+    const targetTagsForRail = Math.ceil(eligibleItems.length * this.globalTagDistribution.targetTagPercentage);
+    let tagsAssignedInRail = 0;
+    
+    // Process each item with balanced distribution in mind
+    content.forEach((item, index) => {
       if (!item.tags || item.progress > 0 || item.is_live || item.is_new) {
         item._selectedTag = null;
         return;
@@ -883,34 +901,82 @@ class V2App {
       const tags = item.tags.split(',').map(tag => tag.trim());
       const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
       
+      // Decide if this card should get a tag based on distribution
+      const shouldAssignTag = this.shouldAssignTagForBalance(
+        tagsAssignedInRail, 
+        targetTagsForRail, 
+        index, 
+        eligibleItems.length
+      );
+      
+      if (!shouldAssignTag || filteredTags.length === 0) {
+        item._selectedTag = null;
+        return;
+      }
+      
       // Priority tags always get preference
-      const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
       let selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase()));
       
-      // If no priority tag, find an unused tag
+      // If no priority tag, find an unused tag globally
       if (!selectedTag) {
-        selectedTag = filteredTags.find(tag => !usedTags.has(tag.toLowerCase()));
+        selectedTag = filteredTags.find(tag => !this.globalTagDistribution.usedTags.has(tag.toLowerCase()));
       }
       
-      // If all tags are used, pick the least recently used one
-      if (!selectedTag && filteredTags.length > 0) {
-        // Clear used tags if we've used them all
-        if (usedTags.size >= filteredTags.length * 2) {
-          usedTags.clear();
-        }
-        selectedTag = filteredTags[0];
+      // If all tags are used globally, pick the least used one
+      if (!selectedTag) {
+        selectedTag = this.selectLeastUsedTag(filteredTags);
       }
       
-      // Store the selected tag and mark it as used
+      // Store the selected tag
       if (selectedTag) {
         item._selectedTag = selectedTag;
-        usedTags.add(selectedTag.toLowerCase());
+        this.globalTagDistribution.usedTags.add(selectedTag.toLowerCase());
+        this.globalTagDistribution.taggedCards++;
+        tagsAssignedInRail++;
       } else {
         item._selectedTag = null;
       }
     });
     
     return content;
+  }
+  
+  shouldAssignTagForBalance(assigned, target, index, total) {
+    // If we haven't reached our target, distribute evenly
+    if (assigned < target) {
+      // Calculate even distribution across remaining items
+      const remainingItems = total - index;
+      const remainingTags = target - assigned;
+      const probability = remainingTags / remainingItems;
+      
+      // Use deterministic distribution for consistency
+      return (index % Math.ceil(1 / probability)) === 0;
+    }
+    return false;
+  }
+  
+  selectLeastUsedTag(tags) {
+    // When all tags have been used, select the one that appears least frequently
+    const tagCounts = new Map();
+    
+    // Count global tag usage
+    for (const tag of this.globalTagDistribution.usedTags) {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+    }
+    
+    // Find the least used tag from available options
+    let leastUsedTag = tags[0];
+    let minCount = Infinity;
+    
+    for (const tag of tags) {
+      const count = tagCounts.get(tag.toLowerCase()) || 0;
+      if (count < minCount) {
+        minCount = count;
+        leastUsedTag = tag;
+      }
+    }
+    
+    return leastUsedTag;
   }
 }
 
