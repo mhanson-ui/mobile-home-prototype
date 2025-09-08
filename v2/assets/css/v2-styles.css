@@ -274,7 +274,7 @@ main {
 /* Content tag badge - positioned like LIVE/NEW badges */
 .content-tag {
   position: absolute !important;
-  bottom: 48px;
+  top: 8px;
   left: 8px;
   padding: 3px 8px;
   border-radius: 3px;
