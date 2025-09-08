@@ -713,6 +713,31 @@ main {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Approach-specific header gradients */
+.v2-approach-1 .v2-page-header-minimal {
+  background: linear-gradient(135deg, #667eea 0%, #5563d1 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.v2-approach-2 .v2-page-header-minimal {
+  background: linear-gradient(135deg, #764ba2 0%, #5b3a80 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.v2-approach-3 .v2-page-header-minimal {
+  background: linear-gradient(135deg, #f093fb 0%, #e876ea 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.v2-approach-4 .v2-page-header-minimal {
+  background: linear-gradient(135deg, #4facfe 0%, #2e8fe6 100%);
+  color: white;
+  border-bottom: none;
+}
+
 .v2-page-title {
   font-size: 28px;
   font-weight: 600;
@@ -748,6 +773,28 @@ main {
   color: #6b7280;
   line-height: 1.4;
   margin: 0;
+}
+
+/* White text for gradient backgrounds */
+.v2-approach-1 .v2-page-header-minimal .v2-page-title,
+.v2-approach-2 .v2-page-header-minimal .v2-page-title,
+.v2-approach-3 .v2-page-header-minimal .v2-page-title,
+.v2-approach-4 .v2-page-header-minimal .v2-page-title {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.v2-approach-1 .v2-page-header-minimal .v2-page-subtitle,
+.v2-approach-2 .v2-page-header-minimal .v2-page-subtitle,
+.v2-approach-3 .v2-page-header-minimal .v2-page-subtitle,
+.v2-approach-4 .v2-page-header-minimal .v2-page-subtitle {
+  color: white;
+}
+
+.v2-approach-1 .v2-page-header-minimal .v2-page-description,
+.v2-approach-2 .v2-page-header-minimal .v2-page-description,
+.v2-approach-3 .v2-page-header-minimal .v2-page-description,
+.v2-approach-4 .v2-page-header-minimal .v2-page-description {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Responsive Adjustments */
