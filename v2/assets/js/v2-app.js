@@ -467,16 +467,16 @@ class V2App {
       if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
     }
 
-    // Tag display rule: Maximum 1 tag per card, only for editorial and shortform content
+    // Tag display rule: Maximum 1 tag per card
     // Not all content needs tags - use sparingly to avoid overwhelming users
     // Priority rules for showing tags:
-    // 1. No tags if item has LIVE badge (live events are self-explanatory)
+    // 1. Show tags on editorial, shortform, and live rails
     // 2. No tags if item has progress bar (Continue Watching items)
-    // 3. Tags can coexist with NEW badge for editorial context
+    // 3. For live content, filter out redundant "live" tag
     const shouldShowTag = (railDef.type === 'editorial' || 
-                          railDef.type === 'shortform') && 
+                          railDef.type === 'shortform' ||
+                          railDef.type === 'live') && 
                          item.tags && 
-                         !item.is_live && // Live content already has LIVE badge
                          item.progress === 0; // No tags on Continue Watching items
     
     // Select most relevant tag based on content
