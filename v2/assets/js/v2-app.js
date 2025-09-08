@@ -163,12 +163,21 @@ class V2App {
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' }
     ];
 
-    railDefinitions.forEach(def => {
-      const content = this.getContentForRail(def);
-      if (content.length > 0) {
-        this.createRail(def, content);
-      }
-    });
+    // Repeat pattern 5 times
+    for (let i = 0; i < 5; i++) {
+      railDefinitions.forEach((def, index) => {
+        const content = this.getContentForRail(def);
+        if (content.length > 0) {
+          // Create unique ID for repeated rails
+          const uniqueDef = { ...def, id: `${def.id}_${i}` };
+          // Add repeat number to title if not first iteration
+          if (i > 0) {
+            uniqueDef.title = `${def.title} ${i + 1}`;
+          }
+          this.createRail(uniqueDef, content);
+        }
+      });
+    }
   }
 
   loadMixedAspectRails() {
@@ -181,12 +190,19 @@ class V2App {
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'small' }
     ];
 
-    railDefinitions.forEach(def => {
-      const content = this.getContentForRail(def);
-      if (content.length > 0) {
-        this.createRail(def, content);
-      }
-    });
+    // Repeat pattern 5 times
+    for (let i = 0; i < 5; i++) {
+      railDefinitions.forEach(def => {
+        const content = this.getContentForRail(def);
+        if (content.length > 0) {
+          const uniqueDef = { ...def, id: `${def.id}_${i}` };
+          if (i > 0) {
+            uniqueDef.title = `${def.title} ${i + 1}`;
+          }
+          this.createRail(uniqueDef, content);
+        }
+      });
+    }
   }
 
   loadContextualRails() {
@@ -221,12 +237,19 @@ class V2App {
         break;
     }
 
-    railDefinitions.forEach(def => {
-      const content = this.getContentForRail(def);
-      if (content.length > 0) {
-        this.createRail(def, content);
-      }
-    });
+    // Repeat pattern 5 times
+    for (let i = 0; i < 5; i++) {
+      railDefinitions.forEach(def => {
+        const content = this.getContentForRail(def);
+        if (content.length > 0) {
+          const uniqueDef = { ...def, id: `${def.id}_${i}` };
+          if (i > 0) {
+            uniqueDef.title = `${def.title} ${i + 1}`;
+          }
+          this.createRail(uniqueDef, content);
+        }
+      });
+    }
   }
 
   loadAnchorRotationalRails() {
@@ -246,7 +269,7 @@ class V2App {
       { id: 'editorial_story', title: 'Editorial Story', type: 'editorial', aspect: '16:9', size: 'medium' }
     ];
 
-    // Add anchors first
+    // Add anchors first (only once, not repeated)
     anchors.forEach(def => {
       const content = this.getContentForRail(def);
       if (content.length > 0) {
@@ -254,13 +277,19 @@ class V2App {
       }
     });
 
-    // Add rotational rails
-    rotational.forEach(def => {
-      const content = this.getContentForRail(def);
-      if (content.length > 0) {
-        this.createRail(def, content);
-      }
-    });
+    // Repeat rotational pattern 5 times
+    for (let i = 0; i < 5; i++) {
+      rotational.forEach(def => {
+        const content = this.getContentForRail(def);
+        if (content.length > 0) {
+          const uniqueDef = { ...def, id: `${def.id}_${i}` };
+          if (i > 0) {
+            uniqueDef.title = `${def.title} ${i + 1}`;
+          }
+          this.createRail(uniqueDef, content);
+        }
+      });
+    }
   }
 
   getCurrentContext() {

@@ -60,6 +60,9 @@ main {
   font-size: 16px;
   font-weight: 600;
   color: #1d1d1f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Base Carousel Styles */
@@ -276,15 +279,15 @@ main {
 
 /* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
-  background: rgba(107, 114, 128, 0.05);
+  background: rgba(59, 130, 246, 0.05);
 }
 
 .row[data-rail-type="utility"]::before {
-  background: linear-gradient(135deg, #6c757d, #868e96);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
-  color: #374151;
+  color: #1e40af;
 }
 
 .row[data-rail-type="live"] {
@@ -562,15 +565,18 @@ main {
 .auto-advance-indicator {
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 10px;
-  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 8px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   pointer-events: none;
   animation: fadeIn 0.3s ease;
-  margin-left: 12px;
+  margin-left: 8px;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @keyframes fadeIn {
