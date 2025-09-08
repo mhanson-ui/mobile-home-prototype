@@ -544,9 +544,24 @@ class V2App {
 
     const railId = rail.getAttribute('data-rail');
     const isAnchor = rail.getAttribute('data-anchor') === 'true';
+    
+    // Check if this is the first rail and should be pinned
+    const isFirstRail = rail === rail.parentElement.querySelector('.row:first-child');
+    const isPinned = isFirstRail && (this.approach === 'contextual' || this.approach === 'anchor');
+    
+    // Add pinned indicator if applicable
+    if (isPinned) {
+      const pinnedIndicator = document.createElement('span');
+      pinnedIndicator.className = 'rail-control-btn pinned-indicator';
+      pinnedIndicator.innerHTML = '📌';
+      pinnedIndicator.title = 'Pinned Rail';
+      pinnedIndicator.style.cursor = 'default';
+      pinnedIndicator.style.opacity = '0.7';
+      controlsContainer.appendChild(pinnedIndicator);
+    }
 
     // Move Up button
-    if (!isAnchor && rail.previousElementSibling && this.approach !== 'contextual') {
+    if (!isAnchor && !isPinned && rail.previousElementSibling && this.approach !== 'contextual') {
       const moveUpBtn = document.createElement('button');
       moveUpBtn.className = 'rail-control-btn';
       moveUpBtn.innerHTML = '↑';
@@ -559,7 +574,7 @@ class V2App {
     }
 
     // Move Down button
-    if (!isAnchor && rail.nextElementSibling && this.approach !== 'contextual') {
+    if (!isAnchor && !isPinned && rail.nextElementSibling && this.approach !== 'contextual') {
       const moveDownBtn = document.createElement('button');
       moveDownBtn.className = 'rail-control-btn';
       moveDownBtn.innerHTML = '↓';
@@ -572,7 +587,7 @@ class V2App {
     }
 
     // Remove button
-    if (!isAnchor) {
+    if (!isAnchor && !isPinned) {
       const removeBtn = document.createElement('button');
       removeBtn.className = 'rail-control-btn';
       removeBtn.innerHTML = '×';
@@ -587,13 +602,7 @@ class V2App {
       controlsContainer.appendChild(removeBtn);
     }
 
-    // Add Rail button
-    const addBtn = document.createElement('button');
-    addBtn.className = 'rail-control-btn add-rail-btn';
-    addBtn.innerHTML = '+ Add Rail';
-    addBtn.title = 'Add New Rail';
-    addBtn.addEventListener('click', () => this.showAddRailMenu(rail));
-    controlsContainer.appendChild(addBtn);
+    // Add Rail button - removed per user request
   }
 
   updateAllRailControls() {
