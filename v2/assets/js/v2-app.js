@@ -516,14 +516,24 @@ class V2App {
         return;
       }
       
+      // Move to next card, loop back to start if at end
       currentIndex = (currentIndex + 1) % cards.length;
       const card = cards[currentIndex];
+      
       if (card) {
-        const cardLeft = card.offsetLeft;
-        track.scrollTo({
-          left: cardLeft - 20,
-          behavior: 'smooth'
-        });
+        // If we've looped back to the first card, ensure we scroll to the very beginning
+        if (currentIndex === 0) {
+          track.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          const cardLeft = card.offsetLeft;
+          track.scrollTo({
+            left: cardLeft - 20,
+            behavior: 'smooth'
+          });
+        }
       }
     };
 
