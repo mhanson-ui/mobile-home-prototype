@@ -20,11 +20,16 @@ main {
 
 /* Row and Rail Layout */
 .row {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   background: white;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 16px 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.2s ease;
+}
+
+.row:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .row-header {
@@ -182,6 +187,12 @@ main {
   font-size: 11px;
   font-weight: 600;
   margin-bottom: 2px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card .meta .duration {
@@ -249,37 +260,41 @@ main {
   object-fit: cover;
 }
 
-/* Rail Type Indicators - Color-coded backgrounds */
+/* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #f8f9fa;
+  border-left: 4px solid #6c757d;
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
-  color: #495057;
+  color: #212529;
 }
 
 .row[data-rail-type="live"] {
-  background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+  background: #f0f9ff;
+  border-left: 4px solid #0284c7;
 }
 
 .row[data-rail-type="live"] .row-header h2 {
-  color: #dc3545;
+  color: #075985;
 }
 
 .row[data-rail-type="editorial"] {
-  background: linear-gradient(135deg, #f8f9ff 0%, #e7e9ff 100%);
+  background: #faf5ff;
+  border-left: 4px solid #7c3aed;
 }
 
 .row[data-rail-type="editorial"] .row-header h2 {
-  color: #5856d6;
+  color: #5b21b6;
 }
 
 .row[data-rail-type="shortform"] {
-  background: linear-gradient(135deg, #fff9f0 0%, #ffedd5 100%);
+  background: #fefce8;
+  border-left: 4px solid #ca8a04;
 }
 
 .row[data-rail-type="shortform"] .row-header h2 {
-  color: #f97316;
+  color: #713f12;
 }
 
 /* Special rails */
@@ -362,19 +377,19 @@ main {
 /* Anchor Rails (Approach 4) */
 .row[data-anchor="true"] {
   position: relative;
-  border: 2px solid rgba(102, 126, 234, 0.2);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(102, 126, 234, 0.02) 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.row[data-anchor="true"] .row-header::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: #667eea;
-  border-radius: 12px 0 0 12px;
+.row[data-anchor="true"] .row-header h2::after {
+  content: 'PINNED';
+  margin-left: 8px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
 }
 
 /* Specific rail fixes to ensure proper 16:9 aspect ratio */
@@ -476,7 +491,7 @@ main {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: #ff3b30;
+  background: #0284c7;
   color: white;
   padding: 3px 8px;
   border-radius: 3px;
