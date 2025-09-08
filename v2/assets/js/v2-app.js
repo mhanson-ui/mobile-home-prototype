@@ -488,6 +488,11 @@ class V2App {
       const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
       const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
       
+      // Debug logging for Live Channels
+      if (railDef.type === 'live' && railDef.id === 'live_channels') {
+        console.log(`Live Channels - ${item.title}: tags=${tags}, filtered=${filteredTags}`);
+      }
+      
       // Prioritize certain tag types for better user value
       const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
       selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase())) || filteredTags[0] || null;
