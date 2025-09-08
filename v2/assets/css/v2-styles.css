@@ -325,13 +325,14 @@ main {
 
 /* Special rails */
 .row[data-rail="shortform_placeholder"] {
-  background: #1d1d1f;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d, #f56040, #f77737, #fcaf45, #ffdc80);
   padding: 0;
   margin-bottom: 24px;
+  position: relative;
 }
 
 .row[data-rail="shortform_placeholder"]::before {
-  background: linear-gradient(135deg, #374151, #4b5563);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.3));
 }
 
 .row[data-rail="shortform_placeholder"] .row-header {
@@ -340,6 +341,17 @@ main {
 
 .row[data-rail="shortform_placeholder"] .row-header h2 {
   color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.row[data-rail="shortform_placeholder"] .rail-controls .rail-control-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.row[data-rail="shortform_placeholder"] .rail-controls .rail-control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Rail Controls */
