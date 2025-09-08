@@ -467,9 +467,16 @@ class V2App {
       if (item.duration) metadata.push(`<span class="meta-item">${item.duration}min</span>`);
     }
 
-    // Show single tag for editorial and shortform rails
-    const showTag = (railDef.type === 'editorial' || railDef.type === 'shortform') && item.tags;
-    const firstTag = showTag ? item.tags.split(',')[0].trim() : null;
+    // Tag display rule: Maximum 1 tag per card, only for editorial and shortform content
+    // Not all content needs tags - use sparingly to avoid overwhelming users
+    // Only show tags for specific high-value content to maintain clean UI
+    const shouldShowTag = (railDef.type === 'editorial' || railDef.type === 'shortform') && 
+                         item.tags && 
+                         !item.is_live && // Live content already has LIVE badge
+                         !item.is_new && // New content already has NEW badge
+                         Math.random() > 0.4; // Show tags on ~60% of eligible content
+    
+    const firstTag = shouldShowTag ? item.tags.split(',')[0].trim() : null;
 
     return `
       <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}" data-rail-type="${railDef.type}">
