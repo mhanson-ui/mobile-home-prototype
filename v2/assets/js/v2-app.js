@@ -138,7 +138,8 @@ class V2App {
       totalEligibleCards: 0,
       taggedCards: 0,
       targetTagPercentage: 0.3, // Aim for 30% of eligible cards to have tags
-      usedTags: new Set()
+      usedTags: new Set(),
+      processedItems: new Map() // Track which items have been processed
     };
     
     // Load rails based on approach
@@ -315,7 +316,8 @@ class V2App {
   }
 
   getContentForRail(railDef) {
-    let filtered = [...contentDatabase];
+    // Create deep copies to preserve tag selections
+    let filtered = contentDatabase.map(item => ({...item}));
 
     // Apply genre filter
     if (this.activeGenre !== 'all') {
@@ -895,8 +897,15 @@ class V2App {
     
     // Process each item with balanced distribution in mind
     content.forEach((item, index) => {
+      // Check if this item was already processed
+      if (this.globalTagDistribution.processedItems.has(item.id)) {
+        item._selectedTag = this.globalTagDistribution.processedItems.get(item.id);
+        return;
+      }
+      
       if (!item.tags || item.progress > 0 || item.is_live || item.is_new) {
         item._selectedTag = null;
+        this.globalTagDistribution.processedItems.set(item.id, null);
         return;
       }
       
@@ -934,9 +943,11 @@ class V2App {
         item._selectedTag = selectedTag;
         this.globalTagDistribution.usedTags.add(selectedTag.toLowerCase());
         this.globalTagDistribution.taggedCards++;
+        this.globalTagDistribution.processedItems.set(item.id, selectedTag);
         tagsAssignedInRail++;
       } else {
         item._selectedTag = null;
+        this.globalTagDistribution.processedItems.set(item.id, null);
       }
     });
     
