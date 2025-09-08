@@ -553,10 +553,13 @@ class V2App {
     if (isPinned) {
       const pinnedIndicator = document.createElement('span');
       pinnedIndicator.className = 'rail-control-btn pinned-indicator';
-      pinnedIndicator.innerHTML = '📌';
+      pinnedIndicator.innerHTML = 'PINNED';
       pinnedIndicator.title = 'Pinned Rail';
       pinnedIndicator.style.cursor = 'default';
       pinnedIndicator.style.opacity = '0.7';
+      pinnedIndicator.style.fontSize = '10px';
+      pinnedIndicator.style.fontWeight = '600';
+      pinnedIndicator.style.letterSpacing = '0.5px';
       controlsContainer.appendChild(pinnedIndicator);
     }
 
