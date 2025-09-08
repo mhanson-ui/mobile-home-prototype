@@ -38,3 +38,8 @@ movie_007,Killers of the Flower Moon,movie,drama,crime,206,R,4K,2023,Apple,edito
 movie_008,Spider-Man: Across the Spider-Verse,movie,animation,superhero,140,PG,4K HDR,2023,Sony,trending/spiderverse-2,0,false,false,false,"Miles Morales returns for multiversal adventure","animation,marvel,superhero,sequel"
 show_007,The White Lotus,tv,drama,satire,60,TV-MA,4K,2021,HBO,continue-watching/white-lotus,55,false,false,false,"Dark comedy about wealthy vacationers","satire,mystery,ensemble,mike white"
 show_008,Squid Game,tv,drama,thriller,60,TV-MA,4K HDR,2021,Netflix,collections/squid-game,0,false,false,false,"Debt-ridden people compete in deadly games","korean,thriller,survival,social commentary"
+channel_001,ESPN,channel,sports,live,0,TV-PG,HD,2024,ESPN,live-now/espn-channel,0,true,false,false,"24/7 Sports Coverage","sports,live,4K"
+channel_002,CNN,channel,news,live,0,TV-PG,HD,2024,CNN,live-now/cnn-channel,0,true,false,false,"24/7 News Network","news,live,breaking news"
+channel_003,HBO,channel,entertainment,premium,0,TV-MA,4K HDR,2024,HBO,live-now/hbo-channel,0,false,false,false,"Premium Entertainment Channel","movies,series,premium,4K HDR"
+channel_004,Disney Channel,channel,kids,family,0,TV-G,HD,2024,Disney,live-now/disney-channel,0,false,false,false,"Family Entertainment","kids,family,animation"
+channel_005,Food Network,channel,lifestyle,culinary,0,TV-G,HD,2024,Food Network,live-now/food-network,0,false,false,false,"Cooking and Food Shows","cooking,lifestyle,competition"

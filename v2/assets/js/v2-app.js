@@ -166,7 +166,7 @@ class V2App {
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
       // LIVE
       { id: 'currently_live', title: 'Currently Live', type: 'live', aspect: '16:9', size: 'large' },
-      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
+      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '2:3', size: 'medium' },
       // EDITORIAL
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'recommended', title: 'Recommended', type: 'editorial', aspect: '16:9', size: 'medium' },
@@ -198,7 +198,7 @@ class V2App {
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
-      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
+      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '2:3', size: 'medium' },
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' }
     ];
 
@@ -234,7 +234,7 @@ class V2App {
         railDefinitions = [
           { id: 'currently_live', title: 'Currently Live', type: 'live', aspect: '16:9', size: 'large' },
           { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
-          { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
+          { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '2:3', size: 'medium' },
           { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'gamestream', title: 'GameStream', type: 'shortform', aspect: '2:3', size: 'medium' },
           { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' }
@@ -277,7 +277,7 @@ class V2App {
       { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
       { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
       { id: 'upcoming_games', title: 'Upcoming Games', type: 'utility', aspect: '16:9', size: 'medium' },
-      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '16:9', size: 'medium' },
+      { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '2:3', size: 'medium' },
       { id: 'editorial_story', title: 'Editorial Story', type: 'editorial', aspect: '16:9', size: 'medium' }
     ];
 
@@ -336,8 +336,10 @@ class V2App {
       
       case 'currently_live':
       case 'live_now':
+        return filtered.filter(item => item.is_live === true && item.type !== 'channel').slice(0, 8);
+        
       case 'live_channels':
-        return filtered.filter(item => item.is_live === true).slice(0, 8);
+        return filtered.filter(item => item.type === 'channel').slice(0, 8);
       
       case 'upcoming_games':
       case 'todays_games':
