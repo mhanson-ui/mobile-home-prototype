@@ -157,6 +157,9 @@ class V2App {
         this.loadAnchorRotationalRails();
         break;
     }
+    
+    // Ensure minimum number of rails when filtering
+    this.ensureMinimumRails();
   }
 
   loadIntentBasedRails() {
@@ -345,9 +348,13 @@ class V2App {
       
       case 'upcoming_games':
       case 'todays_games':
-        return filtered.filter(item => 
+        const upcomingGames = filtered.filter(item => 
           item.type === 'sports' && !item.is_live
         ).slice(0, 8);
+        if (this.activeGenre !== 'all' && upcomingGames.length === 0) {
+          console.log(`No upcoming games for genre: ${this.activeGenre}`);
+        }
+        return upcomingGames;
       
       case 'featured_picks':
       case 'editorial_picks':
@@ -990,6 +997,43 @@ class V2App {
     }
     
     return leastUsedTag;
+  }
+  
+  ensureMinimumRails() {
+    // Only apply minimum rails when filtering by genre (not "all")
+    if (this.activeGenre === 'all') return;
+    
+    const visibleRails = this.container.querySelectorAll('.row').length;
+    const minimumRails = 10;
+    
+    if (visibleRails < minimumRails) {
+      console.log(`Only ${visibleRails} rails visible for genre ${this.activeGenre}, adding more...`);
+      
+      // Define fallback rails that work for any genre
+      const fallbackRails = [
+        { id: 'recommended_extra', title: `Recommended ${this.activeGenre.charAt(0).toUpperCase() + this.activeGenre.slice(1)}`, type: 'editorial', aspect: '16:9', size: 'medium' },
+        { id: 'trending_extra', title: `Trending in ${this.activeGenre.charAt(0).toUpperCase() + this.activeGenre.slice(1)}`, type: 'editorial', aspect: '16:9', size: 'medium' },
+        { id: 'top_rated_extra', title: `Top Rated ${this.activeGenre.charAt(0).toUpperCase() + this.activeGenre.slice(1)}`, type: 'editorial', aspect: '16:9', size: 'medium' },
+        { id: 'new_releases_extra', title: `New ${this.activeGenre.charAt(0).toUpperCase() + this.activeGenre.slice(1)} Releases`, type: 'editorial', aspect: '16:9', size: 'medium' },
+        { id: 'classics_extra', title: `Classic ${this.activeGenre.charAt(0).toUpperCase() + this.activeGenre.slice(1)}`, type: 'editorial', aspect: '16:9', size: 'medium' }
+      ];
+      
+      let railsAdded = 0;
+      const railsNeeded = minimumRails - visibleRails;
+      
+      // Add fallback rails until we reach minimum
+      for (const railDef of fallbackRails) {
+        if (railsAdded >= railsNeeded) break;
+        
+        const content = this.getContentForRail(railDef);
+        if (content.length > 0) {
+          this.createRail(railDef, content);
+          railsAdded++;
+        }
+      }
+      
+      console.log(`Added ${railsAdded} additional rails`);
+    }
   }
 }
 
