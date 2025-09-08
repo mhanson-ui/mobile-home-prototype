@@ -273,7 +273,7 @@ main {
 
 /* Content tag badge - positioned like LIVE/NEW badges */
 .content-tag {
-  position: absolute;
+  position: absolute !important;
   bottom: 48px;
   left: 8px;
   padding: 3px 8px;
@@ -282,8 +282,9 @@ main {
   font-weight: 600;
   letter-spacing: 0.3px;
   text-transform: uppercase;
-  z-index: 2;
+  z-index: 10;
   white-space: nowrap;
+  display: block;
 }
 
 /* Different tag styles for editorial vs shortform */

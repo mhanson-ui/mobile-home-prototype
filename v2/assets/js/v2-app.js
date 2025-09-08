@@ -470,14 +470,13 @@ class V2App {
     // Tag display rule: Maximum 1 tag per card, only for editorial and shortform content
     // Not all content needs tags - use sparingly to avoid overwhelming users
     // Priority rules for showing tags:
-    // 1. No tags if item already has LIVE or NEW badge
-    // 2. No tags if item has progress (Continue Watching items)
-    // 3. Only show for featured/editorial picks and select shortform content
+    // 1. No tags if item has LIVE badge (live events are self-explanatory)
+    // 2. No tags if item has progress bar (Continue Watching items)
+    // 3. Tags can coexist with NEW badge for editorial context
     const shouldShowTag = (railDef.type === 'editorial' || 
-                          (railDef.type === 'shortform' && railDef.id === 'shortform_placeholder')) && 
+                          railDef.type === 'shortform') && 
                          item.tags && 
                          !item.is_live && // Live content already has LIVE badge
-                         !item.is_new && // New content already has NEW badge
                          item.progress === 0; // No tags on Continue Watching items
     
     // Select most relevant tag based on content
