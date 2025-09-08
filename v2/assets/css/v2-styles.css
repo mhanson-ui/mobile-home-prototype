@@ -85,25 +85,7 @@
   object-fit: cover;
 }
 
-/* Rail Type Indicators */
-.row[data-rail-type="utility"] .row-header h2::before {
-  content: "🔄 ";
-  opacity: 0.7;
-}
-
-.row[data-rail-type="live"] .row-header h2::before {
-  content: "🔴 ";
-}
-
-.row[data-rail-type="editorial"] .row-header h2::before {
-  content: "⭐ ";
-  opacity: 0.7;
-}
-
-.row[data-rail-type="shortform"] .row-header h2::before {
-  content: "📱 ";
-  opacity: 0.7;
-}
+/* Rail Type Indicators - removed emojis per user request */
 
 /* Rail Controls */
 .rail-controls {
@@ -172,11 +154,7 @@
   position: relative;
 }
 
-.row[data-anchor="true"] .row-header::after {
-  content: "📌";
-  margin-left: 8px;
-  opacity: 0.5;
-}
+/* Anchor rail indicator - removed emoji per user request */
 
 /* Context Toggle (Approach 3) */
 .context-toggle {
