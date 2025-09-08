@@ -469,14 +469,25 @@ class V2App {
 
     // Tag display rule: Maximum 1 tag per card, only for editorial and shortform content
     // Not all content needs tags - use sparingly to avoid overwhelming users
-    // Only show tags for specific high-value content to maintain clean UI
-    const shouldShowTag = (railDef.type === 'editorial' || railDef.type === 'shortform') && 
+    // Priority rules for showing tags:
+    // 1. No tags if item already has LIVE or NEW badge
+    // 2. No tags if item has progress (Continue Watching items)
+    // 3. Only show for featured/editorial picks and select shortform content
+    const shouldShowTag = (railDef.type === 'editorial' || 
+                          (railDef.type === 'shortform' && railDef.id === 'shortform_placeholder')) && 
                          item.tags && 
                          !item.is_live && // Live content already has LIVE badge
                          !item.is_new && // New content already has NEW badge
-                         Math.random() > 0.4; // Show tags on ~60% of eligible content
+                         item.progress === 0; // No tags on Continue Watching items
     
-    const firstTag = shouldShowTag ? item.tags.split(',')[0].trim() : null;
+    // Select most relevant tag based on content
+    let selectedTag = null;
+    if (shouldShowTag && item.tags) {
+      const tags = item.tags.split(',').map(tag => tag.trim());
+      // Prioritize certain tag types for better user value
+      const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
+      selectedTag = tags.find(tag => priorityTags.includes(tag.toLowerCase())) || tags[0];
+    }
 
     return `
       <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}" data-rail-type="${railDef.type}">
@@ -487,7 +498,7 @@ class V2App {
           </div>
         ` : ''}
         ${badges.join('')}
-        ${firstTag ? `<div class="content-tag">${firstTag}</div>` : ''}
+        ${selectedTag ? `<div class="content-tag">${selectedTag}</div>` : ''}
         <div class="meta">
           <div class="title">${item.title}</div>
           ${metadata.length > 0 ? `<div class="metadata">${metadata.join(' • ')}</div>` : ''}
