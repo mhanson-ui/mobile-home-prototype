@@ -674,6 +674,15 @@ main {
   font-weight: 500;
   opacity: 1;
   color: #1d1d1f;
+  margin-bottom: 4px;
+}
+
+.v2-page-header-minimal .v2-page-description {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* Responsive Adjustments */
