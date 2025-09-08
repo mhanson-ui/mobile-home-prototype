@@ -490,12 +490,14 @@ class V2App {
       
       autoAdvanceInterval = setInterval(advanceToNext, 3000);
       
-      // Show indicator
-      if (!carousel.querySelector('.auto-advance-indicator')) {
-        const indicator = document.createElement('div');
+      // Show indicator in header
+      const rail = carousel.closest('.row');
+      const header = rail.querySelector('.row-header h2');
+      if (header && !header.querySelector('.auto-advance-indicator')) {
+        const indicator = document.createElement('span');
         indicator.className = 'auto-advance-indicator';
         indicator.innerHTML = 'Auto-advancing';
-        carousel.appendChild(indicator);
+        header.appendChild(indicator);
       }
       
       console.log('Auto-advance started for rail:', railId);
@@ -507,8 +509,9 @@ class V2App {
         autoAdvanceInterval = null;
       }
       
-      // Remove indicator
-      const indicator = carousel.querySelector('.auto-advance-indicator');
+      // Remove indicator from header
+      const rail = carousel.closest('.row');
+      const indicator = rail.querySelector('.auto-advance-indicator');
       if (indicator) indicator.remove();
     };
 

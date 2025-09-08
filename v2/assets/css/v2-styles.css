@@ -21,7 +21,7 @@ main {
 /* Row and Rail Layout */
 .row {
   margin-bottom: 20px;
-  background: white;
+  background: transparent;
   border-radius: 8px;
   padding: 12px 0 8px;
   border: 1px solid transparent;
@@ -276,7 +276,7 @@ main {
 
 /* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
-  background: #f8f9fa;
+  background: rgba(107, 114, 128, 0.05);
 }
 
 .row[data-rail-type="utility"]::before {
@@ -284,11 +284,11 @@ main {
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
-  color: #212529;
+  color: #374151;
 }
 
 .row[data-rail-type="live"] {
-  background: #f0f9ff;
+  background: rgba(2, 132, 199, 0.05);
 }
 
 .row[data-rail-type="live"]::before {
@@ -296,11 +296,11 @@ main {
 }
 
 .row[data-rail-type="live"] .row-header h2 {
-  color: #075985;
+  color: #0c4a6e;
 }
 
 .row[data-rail-type="editorial"] {
-  background: #faf5ff;
+  background: rgba(124, 58, 237, 0.05);
 }
 
 .row[data-rail-type="editorial"]::before {
@@ -312,7 +312,7 @@ main {
 }
 
 .row[data-rail-type="shortform"] {
-  background: #fefce8;
+  background: rgba(202, 138, 4, 0.05);
 }
 
 .row[data-rail-type="shortform"]::before {
@@ -554,17 +554,17 @@ main {
 
 /* Auto-advance Indicator */
 .auto-advance-indicator {
-  position: absolute;
-  top: 12px;
-  right: 12px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 12px;
-  z-index: 10;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   pointer-events: none;
   animation: fadeIn 0.3s ease;
+  margin-left: 12px;
 }
 
 @keyframes fadeIn {
