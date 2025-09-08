@@ -379,6 +379,9 @@ class V2App {
   }
 
   createRail(definition, content) {
+    // Apply tag variety before creating cards
+    content = this.applyTagVariety(content, definition);
+    
     const rail = document.createElement('section');
     rail.className = 'row';
     rail.setAttribute('data-rail', definition.id);
@@ -479,23 +482,24 @@ class V2App {
                          item.tags && 
                          item.progress === 0; // No tags on Continue Watching items
     
-    // Select most relevant tag based on content
+    // Use pre-selected tag if available, otherwise select based on rules
     let selectedTag = null;
-    if (shouldShowTag && item.tags) {
-      const tags = item.tags.split(',').map(tag => tag.trim());
-      
-      // Filter out redundant tags
-      const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
-      const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
-      
-      // Debug logging for Live Channels
-      if (railDef.type === 'live' && railDef.id === 'live_channels') {
-        console.log(`Live Channels - ${item.title}: tags=${tags}, filtered=${filteredTags}`);
+    if (shouldShowTag) {
+      // Check if tag was pre-selected by variety function
+      if (item._selectedTag !== undefined) {
+        selectedTag = item._selectedTag;
+      } else if (item.tags) {
+        // Fallback to original selection logic
+        const tags = item.tags.split(',').map(tag => tag.trim());
+        
+        // Filter out redundant tags
+        const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
+        const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
+        
+        // Prioritize certain tag types for better user value
+        const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
+        selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase())) || filteredTags[0] || null;
       }
-      
-      // Prioritize certain tag types for better user value
-      const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
-      selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase())) || filteredTags[0] || null;
     }
 
     return `
@@ -855,6 +859,56 @@ class V2App {
       }
     }
     return arr;
+  }
+  
+  applyTagVariety(content, railDef) {
+    // Only apply tag variety to rails that show tags
+    if (railDef.type !== 'editorial' && railDef.type !== 'shortform' && railDef.type !== 'live') {
+      return content;
+    }
+    
+    // Track which tags have been used to ensure variety
+    const usedTags = new Set();
+    const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
+    
+    // Process each item to ensure tag variety
+    content.forEach(item => {
+      if (!item.tags || item.progress > 0) {
+        item._selectedTag = null;
+        return;
+      }
+      
+      const tags = item.tags.split(',').map(tag => tag.trim());
+      const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
+      
+      // Priority tags always get preference
+      const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
+      let selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase()));
+      
+      // If no priority tag, find an unused tag
+      if (!selectedTag) {
+        selectedTag = filteredTags.find(tag => !usedTags.has(tag.toLowerCase()));
+      }
+      
+      // If all tags are used, pick the least recently used one
+      if (!selectedTag && filteredTags.length > 0) {
+        // Clear used tags if we've used them all
+        if (usedTags.size >= filteredTags.length * 2) {
+          usedTags.clear();
+        }
+        selectedTag = filteredTags[0];
+      }
+      
+      // Store the selected tag and mark it as used
+      if (selectedTag) {
+        item._selectedTag = selectedTag;
+        usedTags.add(selectedTag.toLowerCase());
+      } else {
+        item._selectedTag = null;
+      }
+    });
+    
+    return content;
   }
 }
 
