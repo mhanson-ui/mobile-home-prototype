@@ -339,6 +339,16 @@ class V2App {
         ).slice(0, 8);
       
       case 'gamestream':
+        // Only actual sports games/events, not sports-themed entertainment
+        return filtered.filter(item => 
+          // Live sports events
+          (item.type === 'sports' && item.is_live === true) || 
+          // Sports content that's not entertainment shows
+          (item.genre === 'sports' && item.type !== 'tv' && item.type !== 'movie') ||
+          // Sports documentaries about actual games/competitions
+          (item.genre === 'sports' && item.subgenre === 'sports' && item.type === 'documentary')
+        ).slice(0, 8);
+        
       case 'highlights':
       case 'reels_grid':
         return filtered.filter(item => 
