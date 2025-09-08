@@ -419,7 +419,48 @@ class V2App {
     let autoAdvanceInterval = null;
     let inactivityTimer = null;
 
+    const isTopmostCarousel = () => {
+      // Get all carousels on the page
+      const allCarousels = Array.from(document.querySelectorAll('.carousel'));
+      
+      // Get the position of this carousel
+      const carouselRect = carousel.getBoundingClientRect();
+      
+      // Find the topmost visible carousel
+      let topmostCarousel = null;
+      let topmostTop = Infinity;
+      
+      allCarousels.forEach(c => {
+        const rect = c.getBoundingClientRect();
+        // Check if carousel is visible in viewport
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight && rect.top < topmostTop) {
+          topmostTop = rect.top;
+          topmostCarousel = c;
+        }
+      });
+      
+      // If no carousel is fully visible, find the one that's most visible at the top
+      if (!topmostCarousel) {
+        allCarousels.forEach(c => {
+          const rect = c.getBoundingClientRect();
+          // Check if carousel is at least partially visible and closer to top
+          if (rect.bottom > 0 && rect.top < window.innerHeight && rect.top < topmostTop) {
+            topmostTop = rect.top;
+            topmostCarousel = c;
+          }
+        });
+      }
+      
+      return carousel === topmostCarousel;
+    };
+
     const advanceToNext = () => {
+      // Only advance if this is still the topmost carousel
+      if (!isTopmostCarousel()) {
+        stopAutoAdvance();
+        return;
+      }
+      
       currentIndex = (currentIndex + 1) % cards.length;
       const card = cards[currentIndex];
       if (card) {
@@ -432,6 +473,9 @@ class V2App {
     };
 
     const startAutoAdvance = () => {
+      // Only start if this is the topmost carousel
+      if (!isTopmostCarousel()) return;
+      
       if (autoAdvanceInterval) return;
       
       autoAdvanceInterval = setInterval(advanceToNext, 3000);
@@ -440,9 +484,11 @@ class V2App {
       if (!carousel.querySelector('.auto-advance-indicator')) {
         const indicator = document.createElement('div');
         indicator.className = 'auto-advance-indicator';
-        indicator.innerHTML = '▶ Auto-advancing';
+        indicator.innerHTML = 'Auto-advancing';
         carousel.appendChild(indicator);
       }
+      
+      console.log('Auto-advance started for rail:', railId);
     };
 
     const stopAutoAdvance = () => {
@@ -462,13 +508,24 @@ class V2App {
       if (inactivityTimer) clearTimeout(inactivityTimer);
       
       inactivityTimer = setTimeout(() => {
-        startAutoAdvance();
+        if (isTopmostCarousel()) {
+          startAutoAdvance();
+        }
       }, 5000);
     };
 
     // User interaction events
     ['click', 'touchstart', 'keydown', 'scroll'].forEach(event => {
       carousel.addEventListener(event, resetInactivityTimer);
+    });
+
+    // Global scroll event to check if carousel position changed
+    window.addEventListener('scroll', () => {
+      if (autoAdvanceInterval && !isTopmostCarousel()) {
+        stopAutoAdvance();
+      } else if (!autoAdvanceInterval && isTopmostCarousel()) {
+        resetInactivityTimer();
+      }
     });
 
     // Store timers for cleanup
