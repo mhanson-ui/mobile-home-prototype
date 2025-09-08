@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Tags Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-case { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .pass { background: #d4edda; }
+        .fail { background: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Live Tags Test</h1>
+    <div id="results"></div>
+
+    <script>
+        // Simulate the tag logic
+        function shouldShowTag(railType, item) {
+            return (railType === 'editorial' || 
+                    railType === 'shortform' ||
+                    railType === 'live') && 
+                   item.tags && 
+                   item.progress === 0 &&
+                   !item.is_live &&
+                   !item.is_new;
+        }
+
+        // Test cases
+        const testCases = [
+            {
+                name: "Live Channel with is_live=true",
+                railType: 'live',
+                item: { tags: "4k,sports,action", progress: 0, is_live: true, is_new: false },
+                expected: false
+            },
+            {
+                name: "Live Channel with is_live=false",
+                railType: 'live',
+                item: { tags: "4k,sports,action", progress: 0, is_live: false, is_new: false },
+                expected: true
+            },
+            {
+                name: "Editorial content",
+                railType: 'editorial',
+                item: { tags: "drama,exclusive", progress: 0, is_live: false, is_new: false },
+                expected: true
+            },
+            {
+                name: "Item with NEW badge",
+                railType: 'editorial',
+                item: { tags: "drama,exclusive", progress: 0, is_live: false, is_new: true },
+                expected: false
+            }
+        ];
+
+        // Run tests
+        const results = document.getElementById('results');
+        testCases.forEach(test => {
+            const result = shouldShowTag(test.railType, test.item);
+            const passed = result === test.expected;
+            
+            const div = document.createElement('div');
+            div.className = `test-case ${passed ? 'pass' : 'fail'}`;
+            div.innerHTML = `
+                <strong>${test.name}</strong><br>
+                Rail Type: ${test.railType}<br>
+                Item: ${JSON.stringify(test.item)}<br>
+                Expected: ${test.expected}, Got: ${result}<br>
+                Status: ${passed ? 'PASS' : 'FAIL'}
+            `;
+            results.appendChild(div);
+        });
+    </script>
+</body>
+</html>

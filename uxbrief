@@ -1,0 +1,264 @@
+UX Brief V1: Fubo Mobile Homepage
+Context
+The Fubo mobile homepage relies heavily on carousels to surface content. Currently, carousels use a variety of renderers and aspect ratios without a clear organizing principle, leading to visual sameness and potential user confusion. With support for ~30 carousels on screen, we need a coherent strategy that both clarifies what each carousel is for and encourages daily, habitual usage.
+
+Goals
+Clarify Intent: Help users instantly understand the purpose of each carousel (Utility vs. Live vs. Editorial).
+Drive Habitual Use: Make the homepage a daily destination by highlighting live and short-form sports content effectively.
+Enforce Coherence: Establish a scalable structure for ~30 carousels that feels intentional, not cluttered.
+Stay Within System: Only leverage existing renderers/components.
+
+Constraints
+Carousel Types: Three categories: Utility, Live, and Editorial (note: you listed “Utility” twice — assuming one is “Editorial” or equivalent).
+Renderers: Existing components only; no net-new engineering work on modules. Renderers include:
+16:9 Small, Medium, Large (16:9 only),  2:3
+Rules:
+Each carousel must use a single aspect ratio or size.
+2:3 aspect ratio reserved for short-form sports content (GameStream).
+Opportunity exists for an embedded large player carousel (single 16:9 item).
+
+
+Carousel Type
+Primary Intent
+Aspect Ratio
+Size Options
+Placement Strategy
+Utility
+Navigation & quick access
+16:9 (Small or Medium)
+Small / Medium
+Top anchors (first ~3 rows)
+Live
+Immediate engagement (games, live streams)
+16:9 (Medium or Large)
+Medium / Large
+Dynamic mid-stack, prioritized during live events
+Editorial/Discovery
+Surfacing curated or recommended content
+16:9 (Small or Medium)
+Small / Medium
+Interleaved based on personalization and freshness
+Short-Form Sports
+Fast, snackable highlights (GameStream)
+2:3 (Fixed)
+Fixed (no variation)
+Dedicated section or mixed in lower stack
+
+
+(prototype being developed morning of 9.8) 
+
+
+Approach 1: Intent-Based Stacking: Reduces cognitive load; users know where to go for what.
+Description:: Group carousels by type (Utility → Live → Editorial → Short-form).
+User Stories
+As a busy dad, I want Continue Watching at the top so I can instantly resume last night’s game.
+As a casual fan, I want Upcoming Games grouped so I can set recordings without scrolling.
+Use Cases
+Morning check: see “Upcoming Games,” set a reminder.
+Evening: tap “Continue Watching” to resume immediately.
+Pros
+Clear hierarchy by function.
+Easy to scale.
+Reinforces habitual patterns.
+Cons
+Rigid ordering may bury high-value live content.
+Risk of visual fatigue.
+
+
+KPIs
+Session starts via top-anchored Utility.
+Completion rate in Continue Watching.
+Reminder set rate from Upcoming Games.
+
+UTILITY
+[ Continue Watching  ]  [  Continue Watching ] 16:9 Small
+[ Recordings  ]  [  Recordings ] 16:9 Small
+[ Upcoming Games  ]  [  Upcoming Games ] 16:9 Medium
+---------------------------------------------------
+LIVE
+[ Currently Live  ]  [  Currently Live  ]  [  Currently Live ] 16:9 Large
+[ Live Channels  ]  [  Live Channels ] 16:9 Medium
+---------------------------------------------------
+EDITORIAL
+[ Featured Picks  ]  [  Recommended ] 16:9 Medium
+[ GameStream Clip  ]  [  GameStream Clip  ]  [  GameStream Clip ] 2:3
+
+Repeat above pattern 5x
+
+
+
+
+
+
+Approach 2: Mixed but Differentiated by Aspect Ratio: Use visual differentiation instead of strict stacking to communicate function.
+
+Description: n: Interleave carousels by relevance; aspect ratios signal intent (2:3 = short form, 16:9 small = utility, medium/large = live).
+User Stories
+As a highlights-first fan, I want clips to look visually distinct so I know what’s snackable
+As a new user, I want carousels to “look different” so I can easily scan for my interests.
+Use Cases
+Mid-day scroll: user taps a 2:3 highlight because it pops visually.
+Utility carousels remain legible through consistent 16:9 small formatting.
+Pros
+Dynamic, less monotonous.
+Visual language teaches intent.
+Easier to slot in new content types.
+Cons
+Requires user learning.
+Can feel visually noisy.
+KPIs
+Highlight CTR from 2:3 blocks.
+Discovery engagement on editorial picks.
+Higher total watch minutes from mix of utility + live.
+
+UTILITY
+[ Continue Watching  ]  [  Continue Watching ] 16:9 Small
+---------------------------------------------------
+EDITORIAL
+[ Featured Picks  ]  [  Recommended   ] 16:9 Medium
+---------------------------------------------------
+SHORT-FORM
+[ GameStream Clip  ]  [  GameStream Clip  ] 2:3
+---------------------------------------------------
+LIVE
+[ Live Channels  ]  [  Live Channels ] 16:9 Medium
+---------------------------------------------------
+UTILITY
+[ Upcoming Games  ]  [  Upcoming Games ] 16:9 Small
+---------------------------------------------------
+Repeat above pattern 5x
+
+
+
+
+Approach 3: Contextual Programming with Priority Slots. Aligns with temporal context and user needs at different times of day/week.
+
+Description: Carousels shift position by temporal context (e.g., Live floats higher during game time, Utility floats down).
+User Stories
+As a commuter, I want Today’s Games surfaced in the morning so I can plan my evening.
+As a fan, I want Live games prioritized during play so I don’t miss out
+
+Use Cases
+7pm → Live moves mid-stack into top slot.
+Next morning → Recap highlights appear above Editorial.
+Pros
+Always relevant.
+Creates expectation of freshness.
+Flexes with sports calendar.
+Cons
+Potential disorientation as rows “move.”
+Operational complexity.
+KPIs
+DAU uplift from morning/evening check-ins.
+More live watch sessions during game time.
+Strong highlight engagement next day.
+
+MORNING
+---------------------------------------------------
+UTILITY
+[ Today’s Games  ]  [  Today’s Games  ]  [  Today’s Games ] 16:9 Medium
+[ Continue Watching  ]  [  Continue Watching ] 16:9 Small
+---------------------------------------------------
+EDITORIAL
+[ Featured Picks  ]  [  Recommended ] 16:9 Medium
+---------------------------------------------------
+SHORT-FORM
+[ GameStream Clip  ]  [  GameStream Clip  ]  [  GameStream Clip ] 2:3
+Repeat above pattern 5x
+
+
+
+EVENING (during live events)
+---------------------------------------------------
+LIVE
+[ Currently Live  ]  [  Currently Live  ]  [  Currently Live ] 16:9 Large
+[ Live Channels  ]  [  Live Channels ] 16:9 Medium
+---------------------------------------------------
+UTILITY
+[ Upcoming Games  ]  [  Upcoming Games ] 16:9 Medium
+---------------------------------------------------
+SHORT-FORM
+[ GameStream Clip  ]  [  GameStream Clip  ]  [  GameStream Clip ] 2:3
+---------------------------------------------------
+EDITORIAL
+[ Featured Picks  ]  [  Recommended ] 16:9 Medium
+Repeat above pattern 5x
+
+
+
+NEXT DAY (post-event recap)
+---------------------------------------------------
+SHORT-FORM
+[ Tonight’s Highlights  ]  [  Tonight’s Highlights ] 2:3
+---------------------------------------------------
+UTILITY
+[ Continue Watching  ]  [  Continue Watching ] 16:9 Small
+---------------------------------------------------
+EDITORIAL
+[ Editorial Picks  ]  [  Recommended ] 16:9 Medium
+---------------------------------------------------
+Repeat above pattern 5x
+
+
+
+
+
+
+Approach 4: Anchor + Rotational Model: Create a reliable mental model with room for flexibility.
+Description: 2–3 anchor carousels (Utility top, Live mid, Short-form lower). All others rotate programmatically beneath.
+User Stories
+As a repeat user, I want some carousels always fixed so I don’t lose my bearings.
+As a discovery-oriented fan, I want variety below anchors so I keep finding new things.
+
+Use Cases
+Utility anchors assure consistency (Continue Watching always top 3).
+Editorial rotates for freshness.
+
+Pros
+Predictable anchors build trust.
+Balance of structure + freshness.
+Lower risk of clutter.
+
+Cons
+Some content buried if not anchored.
+Needs clear rotation logic.
+KPIs
+Retention from anchors.
+Content spread from rotation.
+Improved session depth.
+
+ANCHORS (Fixed)
+UTILITY
+[ Continue Watching  ]  [  Continue Watching ] 16:9 Small
+---------------------------------------------------
+LIVE
+[ Currently Live  ]  [  Currently Live ] 16:9 Large
+---------------------------------------------------
+SHORT-FORM
+[ GameStream Clip  ]  [  GameStream Clip ] 2:3
+
+
+ROTATIONAL (Dynamic)
+EDITORIAL
+[ Featured Picks  ]  [  Recommended ] 16:9 Medium
+---------------------------------------------------
+UTILITY
+[ Upcoming Games  ]  [  Upcoming Games ] 16:9 Small
+---------------------------------------------------
+LIVE
+[ Live Channels  ]  [  Live Channels ] 16:9 Medium
+---------------------------------------------------
+EDITORIAL
+[ Editorial Story  ]  [  Editorial Story ] 16:9 Medium
+---------------------------------------------------
+
+
+
+Next Steps
+Wireframe Development: Explore layouts for each approach, showing:
+Carousel stacking/ordering.
+Aspect ratio use
+Embedded player treatment.
+Interaction patterns (scrolling, expansion, linking).
+Comparative Review: Present wireframes
+Feedback Session: Validate with stakeholders (product, editorial, brand) and decide on 1–2 approaches to prototype further.
