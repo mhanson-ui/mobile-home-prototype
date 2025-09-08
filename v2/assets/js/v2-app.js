@@ -483,9 +483,14 @@ class V2App {
     let selectedTag = null;
     if (shouldShowTag && item.tags) {
       const tags = item.tags.split(',').map(tag => tag.trim());
+      
+      // Filter out redundant tags
+      const redundantTags = ['live', 'new', 'hd', '4k', '4k hdr'];
+      const filteredTags = tags.filter(tag => !redundantTags.includes(tag.toLowerCase()));
+      
       // Prioritize certain tag types for better user value
       const priorityTags = ['adaptation', 'sequel', 'finale', 'premiere', 'exclusive', 'original'];
-      selectedTag = tags.find(tag => priorityTags.includes(tag.toLowerCase())) || tags[0];
+      selectedTag = filteredTags.find(tag => priorityTags.includes(tag.toLowerCase())) || filteredTags[0] || null;
     }
 
     return `
