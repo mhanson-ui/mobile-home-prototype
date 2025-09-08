@@ -249,6 +249,28 @@ main {
   opacity: 0.8;
 }
 
+/* Metadata styles for network, year, duration */
+.card .meta .metadata {
+  font-size: 9px;
+  color: #9ca3af;
+  margin-top: 1px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.card .meta .meta-item {
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.card .meta .meta-rating {
+  font-weight: 500;
+  color: #7c3aed;
+  opacity: 1;
+}
+
 /* Card Size Variations */
 .card.size-small {
   width: 160px;
