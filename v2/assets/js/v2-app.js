@@ -460,6 +460,12 @@ class V2App {
       badges.push('<div class="new-badge">NEW</div>');
     } else if (item.is_expiring) {
       badges.push('<div class="expiring-badge">EXPIRING</div>');
+    } else if (railDef.id && (railDef.id.includes('upcoming_games') || railDef.id.includes('todays_games')) && item.type === 'sports') {
+      // Add countdown timer for upcoming games
+      const countdownTime = this.generateCountdownTime();
+      if (countdownTime) {
+        badges.push(`<div class="countdown-badge">${countdownTime}</div>`);
+      }
     }
     
     // Quality badge for premium content
@@ -1033,6 +1039,26 @@ class V2App {
       }
       
       console.log(`Added ${railsAdded} additional rails`);
+    }
+  }
+  
+  generateCountdownTime() {
+    // Generate a random countdown time between 30 minutes and 12 hours
+    const minMinutes = 30;
+    const maxMinutes = 12 * 60; // 12 hours in minutes
+    const randomMinutes = Math.floor(Math.random() * (maxMinutes - minMinutes + 1)) + minMinutes;
+    
+    // Convert to hours and minutes
+    const hours = Math.floor(randomMinutes / 60);
+    const minutes = randomMinutes % 60;
+    
+    // Format the countdown
+    if (hours === 0) {
+      return `${minutes}M`;
+    } else if (minutes === 0) {
+      return `${hours}H`;
+    } else {
+      return `${hours}H ${minutes}M`;
     }
   }
 }
