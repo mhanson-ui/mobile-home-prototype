@@ -279,15 +279,15 @@ main {
 
 /* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
-  background: rgba(59, 130, 246, 0.05);
+  background: rgba(34, 197, 94, 0.05);
 }
 
 .row[data-rail-type="utility"]::before {
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  background: linear-gradient(135deg, #22c55e, #4ade80);
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
-  color: #1e40af;
+  color: #15803d;
 }
 
 .row[data-rail-type="live"] {
