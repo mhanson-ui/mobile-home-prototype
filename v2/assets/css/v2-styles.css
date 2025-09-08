@@ -23,9 +23,23 @@ main {
   margin-bottom: 20px;
   background: white;
   border-radius: 8px;
-  padding: 16px 0;
-  border: 1px solid #e5e7eb;
+  padding: 12px 0 8px;
+  border: 1px solid transparent;
+  position: relative;
   transition: box-shadow 0.2s ease;
+}
+
+.row::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .row:hover {
@@ -36,8 +50,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 0 20px;
+  margin-bottom: 8px;
+  padding: 0 16px;
   position: relative;
 }
 
@@ -59,7 +73,7 @@ main {
   gap: 12px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 0 20px;
+  padding: 0 16px;
   scrollbar-width: none;
 }
 
@@ -263,7 +277,10 @@ main {
 /* Rail Type Indicators - Accessible color-coded backgrounds */
 .row[data-rail-type="utility"] {
   background: #f8f9fa;
-  border: 2px solid #6c757d;
+}
+
+.row[data-rail-type="utility"]::before {
+  background: linear-gradient(135deg, #6c757d, #868e96);
 }
 
 .row[data-rail-type="utility"] .row-header h2 {
@@ -272,7 +289,10 @@ main {
 
 .row[data-rail-type="live"] {
   background: #f0f9ff;
-  border: 2px solid #0284c7;
+}
+
+.row[data-rail-type="live"]::before {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
 }
 
 .row[data-rail-type="live"] .row-header h2 {
@@ -281,7 +301,10 @@ main {
 
 .row[data-rail-type="editorial"] {
   background: #faf5ff;
-  border: 2px solid #7c3aed;
+}
+
+.row[data-rail-type="editorial"]::before {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
 }
 
 .row[data-rail-type="editorial"] .row-header h2 {
@@ -290,7 +313,10 @@ main {
 
 .row[data-rail-type="shortform"] {
   background: #fefce8;
-  border: 2px solid #ca8a04;
+}
+
+.row[data-rail-type="shortform"]::before {
+  background: linear-gradient(135deg, #ca8a04, #eab308);
 }
 
 .row[data-rail-type="shortform"] .row-header h2 {
@@ -302,7 +328,10 @@ main {
   background: #1d1d1f;
   padding: 0;
   margin-bottom: 24px;
-  border: 2px solid #374151;
+}
+
+.row[data-rail="shortform_placeholder"]::before {
+  background: linear-gradient(135deg, #374151, #4b5563);
 }
 
 .row[data-rail="shortform_placeholder"] .row-header {
