@@ -996,12 +996,13 @@ main {
   margin: 0;
 }
 
-/* White text for gradient backgrounds */
+/* White text for gradient backgrounds - enhanced visibility */
 .v2-approach-1 .v2-page-header-minimal .v2-page-title,
 .v2-approach-2 .v2-page-header-minimal .v2-page-title,
 .v2-approach-3 .v2-page-header-minimal .v2-page-title,
 .v2-approach-4 .v2-page-header-minimal .v2-page-title {
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .v2-approach-1 .v2-page-header-minimal .v2-page-subtitle,
@@ -1009,13 +1010,17 @@ main {
 .v2-approach-3 .v2-page-header-minimal .v2-page-subtitle,
 .v2-approach-4 .v2-page-header-minimal .v2-page-subtitle {
   color: white;
+  opacity: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .v2-approach-1 .v2-page-header-minimal .v2-page-description,
 .v2-approach-2 .v2-page-header-minimal .v2-page-description,
 .v2-approach-3 .v2-page-header-minimal .v2-page-description,
 .v2-approach-4 .v2-page-header-minimal .v2-page-description {
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Adjustments */
