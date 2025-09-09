@@ -556,6 +556,9 @@ class V2App {
       }
     }
 
+    // Add live video indicator for On Now rail
+    const liveVideoIndicator = railDef.id === 'on_now' ? '<div class="live-video-indicator">LIVE</div>' : '';
+    
     return `
       <div class="card ${sizeClass} ${aspectClass}" data-id="${item.id}" data-genre="${item.genre}" data-rail-type="${railDef.type}">
         <img src="${thumbnailSrc}" alt="${item.title}" class="thumb" onerror="this.src='/v2/public/thumbs/_placeholder.svg'">
@@ -566,6 +569,7 @@ class V2App {
         ` : ''}
         ${badges.join('')}
         ${selectedTag ? `<div class="content-tag">${selectedTag}</div>` : ''}
+        ${liveVideoIndicator}
         <div class="meta">
           <div class="title">${item.title}</div>
           ${metadata.length > 0 ? `<div class="metadata">${metadata.join(' • ')}</div>` : ''}
