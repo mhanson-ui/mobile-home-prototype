@@ -813,6 +813,21 @@ main {
   text-transform: uppercase;
 }
 
+.quality-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
 /* Auto-advance Indicator */
 .auto-advance-indicator {
   background: rgba(0, 0, 0, 0.8);
