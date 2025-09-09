@@ -224,10 +224,21 @@ class V2App {
   loadContextualRails() {
     const context = this.getCurrentContext();
     let railDefinitions = [];
+    
+    // Add pinned "On Now" rail first for all contexts
+    const onNowRail = { 
+      id: 'on_now', 
+      title: 'On Now', 
+      type: 'live', 
+      aspect: '16:9', 
+      size: 'fullwidth',
+      isPinned: true 
+    };
 
     switch(context) {
       case 'morning':
         railDefinitions = [
+          onNowRail,
           { id: 'todays_games', title: "Today's Games", type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'featured_picks', title: 'Featured Picks', type: 'editorial', aspect: '16:9', size: 'medium' },
@@ -236,6 +247,7 @@ class V2App {
         break;
       case 'evening':
         railDefinitions = [
+          onNowRail,
           { id: 'currently_live', title: 'Currently Live', type: 'live', aspect: '16:9', size: 'large' },
           { id: 'shortform_placeholder', title: 'Shortform Placeholder', type: 'shortform', aspect: '2:3', size: 'fullwidth' },
           { id: 'live_channels', title: 'Live Channels', type: 'live', aspect: '2:3', size: 'medium' },
@@ -246,6 +258,7 @@ class V2App {
         break;
       case 'nextday':
         railDefinitions = [
+          onNowRail,
           { id: 'highlights', title: "Tonight's Highlights", type: 'shortform', aspect: '2:3', size: 'medium' },
           { id: 'continue_watching', title: 'Continue Watching', type: 'utility', aspect: '16:9', size: 'medium' },
           { id: 'editorial_picks', title: 'Editorial Picks', type: 'editorial', aspect: '16:9', size: 'medium' }
@@ -253,9 +266,16 @@ class V2App {
         break;
     }
 
-    // Repeat pattern 5 times
+    // Add On Now rail first (only once, not repeated)
+    const onNowContent = this.getContentForRail(onNowRail);
+    if (onNowContent.length > 0) {
+      this.createRail(onNowRail, onNowContent);
+    }
+    
+    // Repeat pattern 5 times (excluding On Now)
+    const repeatableRails = railDefinitions.filter(def => def.id !== 'on_now');
     for (let i = 0; i < 5; i++) {
-      railDefinitions.forEach(def => {
+      repeatableRails.forEach(def => {
         const content = this.getContentForRail(def);
         if (content.length > 0) {
           const uniqueDef = { ...def, id: `${def.id}_${i}` };
@@ -343,6 +363,10 @@ class V2App {
       case 'live_now':
         return filtered.filter(item => item.is_live === true && item.type !== 'channel').slice(0, 8);
         
+      case 'on_now':
+        // Return only 1 live item for fullwidth carousel
+        return filtered.filter(item => item.is_live === true && item.type !== 'channel').slice(0, 1);
+        
       case 'live_channels':
         return filtered.filter(item => item.type === 'channel').slice(0, 8);
       
@@ -409,6 +433,9 @@ class V2App {
     rail.setAttribute('data-size', definition.size);
     if (definition.isAnchor) {
       rail.setAttribute('data-anchor', 'true');
+    }
+    if (definition.isPinned) {
+      rail.setAttribute('data-pinned', 'true');
     }
 
     // Rename GameStream to Entertainment for non-sports shortform content

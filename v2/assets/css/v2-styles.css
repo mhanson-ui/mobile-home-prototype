@@ -462,6 +462,85 @@ main {
   transform: scale(1.1);
 }
 
+/* On Now fullwidth 16:9 rail */
+.row[data-rail^="on_now"] {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.08) 100%);
+  padding: 0;
+  margin-bottom: 24px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+}
+
+.row[data-rail^="on_now"]::before {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  z-index: 1;
+}
+
+.row[data-rail^="on_now"] .row-header {
+  padding: 16px 20px 8px;
+  position: relative;
+}
+
+.row[data-rail^="on_now"] .row-header h2 {
+  color: #dc2626;
+}
+
+.row[data-rail^="on_now"] .carousel {
+  padding: 0;
+  max-width: 100%;
+}
+
+.row[data-rail^="on_now"] .track {
+  padding: 0;
+  justify-content: center;
+  gap: 0;
+}
+
+.row[data-rail^="on_now"] .card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.row[data-rail^="on_now"] .card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.row[data-rail^="on_now"] .nav {
+  display: none;
+}
+
+/* Play button overlay for On Now */
+.row[data-rail^="on_now"] .card {
+  position: relative;
+}
+
+.row[data-rail^="on_now"] .card::after {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.row[data-rail^="on_now"] .card:hover::after {
+  background: rgba(0, 0, 0, 0.9);
+}
+
 /* Rail Controls */
 .rail-controls {
   display: flex;
