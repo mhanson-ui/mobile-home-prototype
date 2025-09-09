@@ -464,25 +464,20 @@ main {
 
 /* On Now fullwidth 16:9 rail */
 .row[data-rail^="on_now"] {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.08) 100%);
+  background: none;
   padding: 0;
   margin-bottom: 24px;
   position: relative;
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+  box-shadow: none;
+  border: none;
 }
 
 .row[data-rail^="on_now"]::before {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  z-index: 1;
+  display: none;
 }
 
 .row[data-rail^="on_now"] .row-header {
-  padding: 16px 20px 8px;
-  position: relative;
-}
-
-.row[data-rail^="on_now"] .row-header h2 {
-  color: #dc2626;
+  display: none;
 }
 
 .row[data-rail^="on_now"] .carousel {
@@ -510,6 +505,10 @@ main {
 }
 
 .row[data-rail^="on_now"] .nav {
+  display: none;
+}
+
+.row[data-rail^="on_now"] .rail-controls {
   display: none;
 }
 

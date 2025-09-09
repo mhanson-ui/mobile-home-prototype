@@ -481,7 +481,8 @@ class V2App {
     const badges = [];
     
     // Primary badges (top priority)
-    if (item.is_live) {
+    // Skip LIVE badge for On Now rail (has its own live indicator)
+    if (item.is_live && railDef.id !== 'on_now') {
       badges.push('<div class="live-badge">LIVE</div>');
     } else if (item.is_new) {
       badges.push('<div class="new-badge">NEW</div>');
@@ -608,6 +609,9 @@ class V2App {
     const track = carousel.querySelector('.track');
     const cards = Array.from(carousel.querySelectorAll('.card'));
     if (cards.length === 0) return;
+    
+    // Skip auto-advance for single-item carousels (On Now, Shortform Placeholder)
+    if (cards.length === 1) return;
 
     let currentIndex = 0;
     let autoAdvanceInterval = null;
