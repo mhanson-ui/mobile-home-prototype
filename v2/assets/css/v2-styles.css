@@ -271,6 +271,15 @@ main {
   opacity: 1;
 }
 
+/* Game time and time remaining for On Now */
+.row[data-rail^="on_now"] .card .meta .game-time,
+.row[data-rail^="on_now"] .card .meta .time-remaining {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
 /* Content tag badge - positioned like LIVE/NEW badges */
 .content-tag {
   position: absolute !important;
@@ -869,29 +878,85 @@ main {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Approach-specific header gradients */
+/* Approach-specific header gradients with enhanced visual depth */
 .v2-approach-1 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #667eea 0%, #5563d1 100%);
+  background: linear-gradient(135deg, #7c8ff4 0%, #667eea 20%, #5563d1 80%, #4954b8 100%);
   color: white;
   border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.v2-approach-1 .v2-page-header-minimal::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -25%;
+  width: 150%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 65%);
+  transform: rotate(-15deg);
+  pointer-events: none;
 }
 
 .v2-approach-2 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #764ba2 0%, #5b3a80 100%);
+  background: linear-gradient(135deg, #9366b8 0%, #764ba2 25%, #5b3a80 75%, #4a3068 100%);
   color: white;
   border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.v2-approach-2 .v2-page-header-minimal::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -25%;
+  width: 150%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 65%);
+  transform: rotate(15deg);
+  pointer-events: none;
 }
 
 .v2-approach-3 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #f093fb 0%, #e876ea 100%);
+  background: linear-gradient(135deg, #f7b3fc 0%, #f093fb 20%, #e876ea 60%, #df5ad9 90%, #d648c8 100%);
   color: white;
   border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.v2-approach-3 .v2-page-header-minimal::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 140%;
+  height: 160%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 60%);
+  transform: rotate(-20deg);
+  pointer-events: none;
 }
 
 .v2-approach-4 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #4facfe 0%, #2e8fe6 100%);
+  background: linear-gradient(135deg, #7fc3fe 0%, #4facfe 20%, #2e8fe6 70%, #1e7dd4 95%, #1571c2 100%);
   color: white;
   border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.v2-approach-4 .v2-page-header-minimal::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 160%;
+  height: 180%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.09) 0%, transparent 70%);
+  transform: rotate(25deg);
+  pointer-events: none;
 }
 
 .v2-page-title {

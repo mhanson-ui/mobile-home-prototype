@@ -508,8 +508,17 @@ class V2App {
     
     // Show different info based on content type
     if (item.type === 'sports' && item.is_live) {
-      // For live sports, show just the duration
-      if (item.duration) metadata.push(`<span class="meta-item">${Math.floor(item.duration/60)}h ${item.duration%60}m</span>`);
+      // For live sports, show game time remaining
+      if (railDef.id === 'on_now') {
+        const gameTime = this.generateGameTime(item);
+        metadata.push(`<span class="meta-item game-time">${gameTime}</span>`);
+      } else if (item.duration) {
+        metadata.push(`<span class="meta-item">${Math.floor(item.duration/60)}h ${item.duration%60}m</span>`);
+      }
+    } else if (railDef.id === 'on_now' && item.is_live) {
+      // For other live content on On Now, show time remaining
+      const timeRemaining = this.generateTimeRemaining(item);
+      metadata.push(`<span class="meta-item time-remaining">${timeRemaining}</span>`);
     } else if (item.type === 'movie') {
       // For movies, show year and rating
       if (item.year) metadata.push(`<span class="meta-item">${item.year}</span>`);
@@ -1094,6 +1103,63 @@ class V2App {
       return `${hours}H`;
     } else {
       return `${hours}H ${minutes}M`;
+    }
+  }
+  
+  generateGameTime(item) {
+    // Generate sport-specific game time based on subgenre
+    if (item.subgenre === 'football' || item.title.includes('NFL')) {
+      // Football: Quarter and time
+      const quarters = ['1Q', '2Q', '3Q', '4Q'];
+      const quarter = quarters[Math.floor(Math.random() * quarters.length)];
+      const minutes = Math.floor(Math.random() * 15);
+      const seconds = Math.floor(Math.random() * 60);
+      return `${quarter} ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else if (item.subgenre === 'basketball' || item.title.includes('NBA')) {
+      // Basketball: Quarter and time
+      const quarters = ['1st', '2nd', '3rd', '4th'];
+      const quarter = quarters[Math.floor(Math.random() * quarters.length)];
+      const minutes = Math.floor(Math.random() * 12);
+      const seconds = Math.floor(Math.random() * 60);
+      return `${quarter} ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else if (item.subgenre === 'soccer' || item.title.includes('Premier League')) {
+      // Soccer: Minutes elapsed
+      const minutes = Math.floor(Math.random() * 90) + 1;
+      return `${minutes}'`;
+    } else if (item.subgenre === 'baseball' || item.title.includes('MLB')) {
+      // Baseball: Inning and count
+      const inning = Math.floor(Math.random() * 9) + 1;
+      const half = Math.random() > 0.5 ? 'Top' : 'Bot';
+      return `${half} ${inning}`;
+    } else if (item.subgenre === 'hockey' || item.title.includes('NHL')) {
+      // Hockey: Period and time
+      const periods = ['1st', '2nd', '3rd'];
+      const period = periods[Math.floor(Math.random() * periods.length)];
+      const minutes = Math.floor(Math.random() * 20);
+      const seconds = Math.floor(Math.random() * 60);
+      return `${period} ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+      // Default sports time
+      return `${Math.floor(Math.random() * 60) + 30} min`;
+    }
+  }
+  
+  generateTimeRemaining(item) {
+    // Generate time remaining for non-sports content
+    if (item.type === 'tv' || item.type === 'news') {
+      // TV shows/news: usually shorter
+      const minutes = Math.floor(Math.random() * 45) + 5;
+      return `${minutes} min left`;
+    } else {
+      // Movies or other: could be longer
+      const totalMinutes = Math.floor(Math.random() * 90) + 20;
+      if (totalMinutes > 60) {
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        return `${hours}h ${minutes}m left`;
+      } else {
+        return `${totalMinutes} min left`;
+      }
     }
   }
 }
