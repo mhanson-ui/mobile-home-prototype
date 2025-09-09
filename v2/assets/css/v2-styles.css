@@ -274,7 +274,7 @@ main {
 /* Game time and time remaining for On Now */
 .row[data-rail^="on_now"] .card .meta .game-time,
 .row[data-rail^="on_now"] .card .meta .time-remaining {
-  color: #dc2626;
+  color: white;
   font-weight: 600;
   font-size: 11px;
   letter-spacing: 0.3px;
@@ -487,6 +487,13 @@ main {
 
 .row[data-rail^="on_now"] .row-header {
   display: none;
+}
+
+/* Ensure all text on On Now is white */
+.row[data-rail^="on_now"] .card .meta,
+.row[data-rail^="on_now"] .card .meta .title,
+.row[data-rail^="on_now"] .card .meta .metadata {
+  color: white;
 }
 
 .row[data-rail^="on_now"] .carousel {
