@@ -880,7 +880,7 @@ main {
 
 /* Approach-specific header gradients with enhanced visual depth */
 .v2-approach-1 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #7c8ff4 0%, #667eea 20%, #5563d1 80%, #4954b8 100%);
+  background: linear-gradient(135deg, #7c8ff4 0%, #667eea 20%, #5563d1 80%, #4954b8 100%) !important;
   color: white;
   border-bottom: none;
   position: relative;
@@ -900,7 +900,7 @@ main {
 }
 
 .v2-approach-2 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #9366b8 0%, #764ba2 25%, #5b3a80 75%, #4a3068 100%);
+  background: linear-gradient(135deg, #9366b8 0%, #764ba2 25%, #5b3a80 75%, #4a3068 100%) !important;
   color: white;
   border-bottom: none;
   position: relative;
@@ -920,7 +920,7 @@ main {
 }
 
 .v2-approach-3 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #f7b3fc 0%, #f093fb 20%, #e876ea 60%, #df5ad9 90%, #d648c8 100%);
+  background: linear-gradient(135deg, #f7b3fc 0%, #f093fb 20%, #e876ea 60%, #df5ad9 90%, #d648c8 100%) !important;
   color: white;
   border-bottom: none;
   position: relative;
@@ -940,7 +940,7 @@ main {
 }
 
 .v2-approach-4 .v2-page-header-minimal {
-  background: linear-gradient(135deg, #7fc3fe 0%, #4facfe 20%, #2e8fe6 70%, #1e7dd4 95%, #1571c2 100%);
+  background: linear-gradient(135deg, #7fc3fe 0%, #4facfe 20%, #2e8fe6 70%, #1e7dd4 95%, #1571c2 100%) !important;
   color: white;
   border-bottom: none;
   position: relative;
